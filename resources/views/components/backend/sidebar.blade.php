@@ -4,7 +4,7 @@
             aria-controls="sidebar-menu" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <h1 class="navbar-brand navbar-brand-autodark">
+        <h1 class="navbar-brand navbar-brand-autodark d-md-flex d-none">
             <a href="{{ route('home') }}" class="px-3">
                 <img src="{{ asset('assets/siberta/logo-siberta-light.svg') }}" width="100%" height="100%" alt="Tabler">
             </a>
