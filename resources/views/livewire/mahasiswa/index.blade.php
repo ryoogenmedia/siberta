@@ -69,8 +69,8 @@
                 >
 
                     <option selected value=""> - Pilih - </option>
-                    @foreach (config('const.program_studi') as $programStudi)
-                        <option wire:key="row-{{ $programStudi }}" value="{{ $programStudi }}">{{ ucwords($programStudi) }}
+                    @foreach (config('const.program_studi') as $key => $programStudi)
+                        <option wire:key="row-{{ $programStudi }}" value="{{ $key }}">{{ ucwords($programStudi) }}
                         </option>
                     @endforeach
 
@@ -166,7 +166,7 @@
 
                             <td>{{ $row->nim ?? '-' }}</td>
 
-                            <td>{{ $row->program_studi ?? '-' }}</td>
+                            <td>{{ config('const.program_studi.' . $row->program_studi) }}</td>
 
                             <td>{{ $row->entry_year ?? '-' }}</td>
 
