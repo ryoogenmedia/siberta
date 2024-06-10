@@ -15,8 +15,11 @@
 
     <div class="row mb-3 align-items-center justify-content-between">
         <div class="col-12 col-lg-5 d-flex">
-            <div>
+            <div class="w-50">
                 <x-datatable.search placeholder="Cari nama mahasiswa..." />
+            </div>
+            <div class="w-50 ms-2">
+                <x-datatable.filter.button target="mahasiswa" />
             </div>
         </div>
 
@@ -35,6 +38,62 @@
             </x-datatable.bulk.dropdown>
         </div>
     </div>
+
+    <x-datatable.filter.card id="mahasiswa">
+        <div class="row">
+            <div class="col-lg-6 col-12">
+                <x-form.input
+                    wire:model.live="filters.nim"
+                    name="filters.nim"
+                    label="NIM"
+                    placeholder="masukkan nim mahasiswa"
+                    type="text"
+                />
+            </div>
+
+            <div class="col-lg-6 col-12">
+                <x-form.input
+                    wire:model.live="filters.nomor_ponsel"
+                    name="filters.nomor_ponsel"
+                    label="Nomor Ponsel"
+                    placeholder="masukkan nomor ponsel mahasiswa"
+                    type="number"
+                />
+            </div>
+
+            <div class="col-lg-6 col-12">
+                <x-form.select
+                    wire:model.lazy="filters.program_studi"
+                    name="filters.program_studi"
+                    label="Program Studi"
+                >
+
+                    <option selected value=""> - Pilih - </option>
+                    @foreach (config('const.program_studi') as $programStudi)
+                        <option wire:key="row-{{ $programStudi }}" value="{{ $programStudi }}">{{ ucwords($programStudi) }}
+                        </option>
+                    @endforeach
+
+                </x-form.select>
+            </div>
+
+            <div class="col-lg-6 col-12">
+                <x-form.select
+                    wire:model.lazy="filters.tahun_masuk"
+                    name="filters.tahun_masuk"
+                    label="Tahun Masuk"
+                >
+
+                    <option selected value=""> - Pilih - </option>
+                    @foreach ($this->tahunMasuk as $tahunMasuk)
+                        <option wire:key="row-{{ $tahunMasuk->entry_year }}" value="{{ $tahunMasuk->entry_year }}">{{ ucwords($tahunMasuk->entry_year) }}
+                        </option>
+                    @endforeach
+
+                </x-form.select>
+            </div>
+        </div>
+    </x-datatable.filter.card>
 
     <div class="card" wire:loading.class.delay="card-loading" wire:offline.class="card-loading">
         <div class="table-responsive mb-0">

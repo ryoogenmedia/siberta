@@ -45,6 +45,15 @@ class Index extends Component
     }
 
     #[Computed()]
+    public function tahunMasuk(){
+        return Mahasiswa::query()
+            ->select('entry_year')
+            ->groupBy('entry_year')
+            ->distinct()
+            ->get();
+    }
+
+    #[Computed()]
     public function rows(){
         $query = Mahasiswa::query()
             ->when(!$this->sorts, fn ($query) => $query->first())
