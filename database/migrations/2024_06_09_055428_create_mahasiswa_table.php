@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('program_studi')->nullable();
             $table->string('email')->unique();
             $table->text('address')->nullable();
-            $table->string('phone')->nullable();
+            $table->string('phone')->nullable()->unique();
             $table->string('entry_year')->nullable();
             $table->timestamps();
         });

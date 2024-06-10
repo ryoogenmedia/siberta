@@ -5,7 +5,6 @@ namespace App\Livewire\Mahasiswa;
 use App\Models\Mahasiswa;
 use Exception;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Validation\Rule;
 use Livewire\Component;
 
 class Create extends Component

@@ -19,7 +19,7 @@ class MahasiswaTableSeeder extends Seeder
                 'nim' => '2023990888373',
                 'program_studi' => 'TI',
                 'email' => 'supriadi.unitama@gmail.com',
-                'phone' => '0899733827272',
+                'phone' => '0899733827288',
                 'address' => 'Jl Pettarani',
                 'entry_year' => '2023',
             ],
