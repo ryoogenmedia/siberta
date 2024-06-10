@@ -28,7 +28,7 @@ class Mahasiswa extends Model
         'email' => 'string',
         'phone' => 'string',
         'address' => 'string',
-        'entry_year' => 'datetime:Y',
+        'entry_year' => 'string',
     ];
 
     public function berkas(){
