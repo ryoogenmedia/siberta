@@ -158,9 +158,9 @@
 
                             <td>
                                 <div class="d-flex flex-column">
-                                    <div class="ms-2">{{ $row->name }}</div>
-                                    <div class="ms-2">{{ $row->email }}</div>
-                                    <div class="ms-2">{{ $row->phone }}</div>
+                                    <div class="ms-2"><b>{{ $row->name }}</b></div>
+                                    <div class="ms-2 pt-2">{{ $row->email }}</div>
+                                    <div class="ms-2 pt-2">{{ $row->phone }}</div>
                                 </div>
                             </td>
 
@@ -173,7 +173,7 @@
                             <td>{{ $row->address ?? '-' }}</td>
 
                             <td>
-                                <div class="d-flex">
+                                <div class="d-flex w-100">
                                     <div class="ms-auto">
                                         <a class="btn btn-sm" href="{{ route('mahasiswa.edit', $row->id) }}">
                                             Sunting
