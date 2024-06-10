@@ -11,6 +11,24 @@ return [
     ],
 
     [
+        'title' => 'Mahasiswa',
+        'icon' => 'graduation-cap',
+        'route-name' => 'mahasiswa.index',
+        'is-active' => 'mahasiswa*',
+        'description' => 'Untuk kelola data mahasiswa.',
+        'roles' => ['admin'],
+    ],
+
+    [
+        'title' => 'Pengguna',
+        'icon' => 'user',
+        'route-name' => 'pengguna.index',
+        'is-active' => 'pengguna*',
+        'description' => 'Untuk kelola data pengguna aplikasi.',
+        'roles' => ['admin'],
+    ],
+
+    [
         'title' => 'Pengaturan',
         'description' => 'Menampilkan pengaturan aplikasi.',
         'icon' => 'cog',

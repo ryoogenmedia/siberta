@@ -28,6 +28,25 @@ Route::middleware('auth', 'verified', 'force.logout')->namespace('App\Livewire')
         ->middleware('roles:admin,user');
 
     /**
+     * mahasiswa
+     */
+    Route::namespace('Mahasiswa')->name('mahasiswa.')->prefix('mahasiswa')->middleware('roles:admin')->group(function(){
+        Route::get('/', Index::class)->name('index');
+        Route::get('/tambah', Create::class)->name('create');
+        Route::get('/sunting/{id}', Edit::class)->name('edit');
+    });
+
+    /**
+     * pengguna
+     */
+    Route::namespace('Pengguna')->prefix('pengguna')->name('pengguna.')->group(function () {
+        Route::get('/', Index::class)->name('index');
+        Route::get('/tambah', Create::class)->name('create');
+        Route::get('/{id}/sunting', Edit::class)->name('edit');
+    });
+
+
+    /**
      * setting
      */
     Route::prefix('pengaturan')->name('setting.')->middleware('roles:admin,user')->namespace('Setting')->group(function () {
