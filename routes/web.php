@@ -45,7 +45,6 @@ Route::middleware('auth', 'verified', 'force.logout')->namespace('App\Livewire')
         Route::get('/{id}/sunting', Edit::class)->name('edit');
     });
 
-
     /**
      * setting
      */

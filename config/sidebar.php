@@ -20,6 +20,15 @@ return [
     ],
 
     [
+        'title' => 'Jadwal Akhir',
+        'icon' => 'calendar-week',
+        'route-name' => 'jadwal-akhir.index',
+        'is-active' => 'jadwal-akhir*',
+        'description' => 'Untuk kelola data jadwal akhir mahasiswa.',
+        'roles' => ['admin'],
+    ],
+
+    [
         'title' => 'Pengguna',
         'icon' => 'user',
         'route-name' => 'pengguna.index',

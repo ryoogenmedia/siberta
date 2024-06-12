@@ -34,8 +34,4 @@ class Mahasiswa extends Model
     public function berkas(){
         return $this->hasMany(Berkas::class,'mahasiswa_id','id');
     }
-
-    public function jadwalAkhir(){
-        return $this->hasOne(JadwalAkhir::class,'mahasiswa_id','id');
-    }
 }
