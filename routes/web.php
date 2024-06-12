@@ -54,6 +54,14 @@ Route::middleware('auth', 'verified', 'force.logout')->namespace('App\Livewire')
     });
 
     /**
+     * revision / revisi
+     */
+    Route::namespace('Revision')->prefix('revisi-berkas')->name('revision.')->group(function () {
+        Route::get('/', Index::class)->name('index');
+        Route::get('/{id}/sunting', Edit::class)->name('edit');
+    });
+
+    /**
      * setting
      */
     Route::prefix('pengaturan')->name('setting.')->middleware('roles:admin,user')->namespace('Setting')->group(function () {

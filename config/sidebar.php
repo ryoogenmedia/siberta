@@ -20,6 +20,15 @@ return [
     ],
 
     [
+        'title' => 'Revisi Berkas',
+        'icon' => 'file-contract',
+        'route-name' => 'revision.index',
+        'is-active' => 'revision*',
+        'description' => 'Untuk kelola data revisi  mahasiswa.',
+        'roles' => ['admin'],
+    ],
+
+    [
         'title' => 'Mahasiswa',
         'icon' => 'graduation-cap',
         'route-name' => 'mahasiswa.index',
