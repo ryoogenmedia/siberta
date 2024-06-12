@@ -178,6 +178,10 @@
                                         <a class="btn btn-sm" href="{{ route('mahasiswa.edit', $row->id) }}">
                                             Sunting
                                         </a>
+
+                                        <a class="btn btn-sm" href="{{ route('mahasiswa.detail', $row->id) }}">
+                                            Detail
+                                        </a>
                                     </div>
                                 </div>
                             </td>

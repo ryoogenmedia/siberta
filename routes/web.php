@@ -34,6 +34,7 @@ Route::middleware('auth', 'verified', 'force.logout')->namespace('App\Livewire')
         Route::get('/', Index::class)->name('index');
         Route::get('/tambah', Create::class)->name('create');
         Route::get('/sunting/{id}', Edit::class)->name('edit');
+        Route::get('/detail/{id}', Detail::class)->name('detail');
     });
 
     /**
@@ -42,7 +43,7 @@ Route::middleware('auth', 'verified', 'force.logout')->namespace('App\Livewire')
     Route::namespace('Pengguna')->prefix('pengguna')->name('pengguna.')->group(function () {
         Route::get('/', Index::class)->name('index');
         Route::get('/tambah', Create::class)->name('create');
-        Route::get('/{id}/sunting', Edit::class)->name('edit');
+        Route::get('/sunting/{id}', Edit::class)->name('edit');
     });
 
     /**
@@ -50,7 +51,7 @@ Route::middleware('auth', 'verified', 'force.logout')->namespace('App\Livewire')
      */
     Route::namespace('Berkas')->prefix('berkas-mahasiswa')->name('berkas.')->group(function () {
         Route::get('/', Index::class)->name('index');
-        Route::get('/{id}/revisi', Revision::class)->name('revision');
+        Route::get('/revisi/{id}', Revision::class)->name('revision');
     });
 
     /**
@@ -58,7 +59,7 @@ Route::middleware('auth', 'verified', 'force.logout')->namespace('App\Livewire')
      */
     Route::namespace('Revision')->prefix('revisi-berkas')->name('revision.')->group(function () {
         Route::get('/', Index::class)->name('index');
-        Route::get('/{id}/sunting', Edit::class)->name('edit');
+        Route::get('/sunting/{id}', Edit::class)->name('edit');
     });
 
     /**
