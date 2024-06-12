@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('mahasiswa_id')->nullable();
             $table->string('type_document')->nullable();
             $table->string('name_file')->nullable();
+            $table->string('file')->nullable();
             $table->string('status_file')->nullable();
             $table->string('date_upload')->nullable();
             $table->string('time_upload')->nullable();

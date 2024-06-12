@@ -21,6 +21,7 @@ class BerkasTableSeeder extends Seeder
                 'status_file' => 'pending',
                 'date_upload' => Carbon::now()->format('Y-m-d'),
                 'time_upload' => Carbon::now()->format('H:i:s'),
+                'file' => 'berkas-mahasiswa/berkas1.pdf',
                 'note_mahasiswa' => 'Assalamulaikum bapak dan ibu dosen, saya ingin menyerahkan lembar persetujuan proposal saya 🙏'
             ],
             [
@@ -28,6 +29,7 @@ class BerkasTableSeeder extends Seeder
                 'type_document' => 'PDF',
                 'name_file' => 'lembar persetujuan proposal',
                 'status_file' => 'pending',
+                'file' => 'berkas-mahasiswa/berkas2.pdf',
                 'date_upload' => Carbon::now()->format('Y-m-d'),
                 'time_upload' => Carbon::now()->format('H:i:s'),
                 'note_mahasiswa' => 'Assalamulaikum bapak dan ibu dosen, saya ingin menyerahkan lembar persetujuan proposal saya 🙏'

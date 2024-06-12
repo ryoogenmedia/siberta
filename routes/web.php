@@ -46,6 +46,14 @@ Route::middleware('auth', 'verified', 'force.logout')->namespace('App\Livewire')
     });
 
     /**
+     * berkas
+     */
+    Route::namespace('Berkas')->prefix('berkas-mahasiswa')->name('berkas.')->group(function () {
+        Route::get('/', Index::class)->name('index');
+        Route::get('/{id}/revisi', Revision::class)->name('revision');
+    });
+
+    /**
      * setting
      */
     Route::prefix('pengaturan')->name('setting.')->middleware('roles:admin,user')->namespace('Setting')->group(function () {

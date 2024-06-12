@@ -15,6 +15,7 @@ return [
         'pending',
         'approve',
         'revision',
+        'revised',
     ],
 
     'name_file' => [

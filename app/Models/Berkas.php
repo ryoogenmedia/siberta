@@ -16,6 +16,7 @@ class Berkas extends Model
         'mahasiswa_id',
         'type_document',
         'name_file',
+        'file',
         'status_file',
         'date_upload',
         'time_upload',
@@ -26,11 +27,16 @@ class Berkas extends Model
         'mahasiswa_id' => 'integer',
         'type_document' => 'string',
         'name_file' => 'string',
+        'file' => 'string',
         'status_file' => 'string',
         'date_upload' => 'datetime:Y-m-d',
         'time_upload' => 'datetime:H:i:s',
         'note_mahasiswa' => 'string',
     ];
+
+    public function revision(){
+        return $this->hasOne(Revision::class,'berkas_id','id')->withDefault();
+    }
 
     public function mahasiswa(){
         return $this->belongsTo(Mahasiswa::class, 'mahasiswa_id','id')->withDefault();

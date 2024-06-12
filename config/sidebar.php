@@ -11,6 +11,15 @@ return [
     ],
 
     [
+        'title' => 'Berkas Mahasiswa',
+        'icon' => 'newspaper',
+        'route-name' => 'berkas.index',
+        'is-active' => 'berkas*',
+        'description' => 'Untuk kelola data berkas mahasiswa.',
+        'roles' => ['admin'],
+    ],
+
+    [
         'title' => 'Mahasiswa',
         'icon' => 'graduation-cap',
         'route-name' => 'mahasiswa.index',
