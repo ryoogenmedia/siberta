@@ -11,6 +11,8 @@ class Index extends Component
     #[Layout('layouts.base-frontend')]
     #[Title('Home')]
 
+    public $categoryDocument;
+
     public function render()
     {
         return view('livewire.frontend.home.index');

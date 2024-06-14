@@ -9,9 +9,10 @@
         <nav id="navbar" class="navbar">
             <ul>
                 @foreach (config('navbar') as $navbar)
-                    <li><a href="{{ $navbar['link'] }}" class="{{ $navbar['status'] == 'active' ? 'active' : '' }}">{{ $navbar['name'] }}</a></li>
                     @if ($navbar['button'])
                         <li><a class="get-a-quote" href="{{ $navbar['link'] }}">{{ $navbar['name'] }}</a></li>
+                    @else
+                        <li><a href="{{ $navbar['link'] }}" class="{{ $navbar['status'] == 'active' ? 'active' : '' }}">{{ $navbar['name'] }}</a></li>
                     @endif
                 @endforeach
             </ul>

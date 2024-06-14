@@ -1,4 +1,4 @@
-<footer id="Kontak" class="footer">
+<footer id="kontak" class="footer">
     <div class="container">
         <div class="row gy-4">
             <div class="col-lg-5 col-md-12 footer-info">
@@ -18,9 +18,6 @@
                 <ul>
                     @foreach (config('navbar') as $navbar)
                         <li><a href="{{ $navbar['link'] }}" class="{{ $navbar['status'] == 'active' ? 'active' : '' }}">{{ $navbar['name'] }}</a></li>
-                        @if ($navbar['button'])
-                            <li><a class="get-a-quote" href="{{ $navbar['link'] }}">{{ $navbar['name'] }}</a></li>
-                        @endif
                     @endforeach
                 </ul>
             </div>

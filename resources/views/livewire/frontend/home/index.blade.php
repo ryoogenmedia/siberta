@@ -56,27 +56,39 @@
         <div class="container" data-aos="fade-up">
             <div class="col-lg-6 content order-last  order-lg-first">
                 <h3>Persyaratan Layanan</h3>
-                <p>Pilih layanan di bawah untuk melihat Persyaratan tiap Layanan
-                </p>
-                <form><select id="id_pelayanan"
-                        class="custom-select form-control select
-                            t2-hidden-accessible"
-                        name="jenis_pelayanan" data-rule-required="true" data-msg-required="Silahkan Pilih Layanan."
-                        data-select2-id="data-select2-id_pelayanan" tabindex="-1" aria-hidden="true"> == $0
-                        <option velue="6C06A380-EFD7-11EC-9F71-0533DADCF6EF" data-select2-id="select2-data-2-uuv3">
-                            "PENGAJUAN BERKAS SEMINAR PROPOSAL"
-                        </option>
-                        <option velue="995A29BB-4186-4F53-ACDE-0F479239756E"data-select2-id="select-data-2-uuv3">
-                            "PENGAJUAN BERKAS SEMINAR HASIL"
-                        </option>
-                        <option velue="0A44BD04-20F0-45DB-9859-1149CF8D4981"data-select2-id="select-data-5-9kg3">
-                            "PENGAJUAN BERKAS TUTUP"
-                        </option>
+                <p><b>Pilih layanan di bawah untuk melihat Persyaratan tiap Layanan</b></p>
 
-                    </select>
-                </form>
-                <ul>
+                <div class="row">
+                    <div class="col-lg-8 col-12">
 
+                        <h4 class="my-4" style="color: #19328a">Pengajuan Berkas Seminar Proposal</h4>
+
+                        <ol type="number" class="my-3" style="font-weight: bold">
+                            @foreach (config('const.name_file.proposal') as $key => $proposal)
+                                <li wire:key='row-{{ $key }}' class="mt-3">{{ $proposal }}</li>
+                            @endforeach
+                        </ol>
+
+                        <h4 class="my-4" style="color: #001F8D">Pengajuan Berkas Seminar Hasil</h4>
+
+                        <ol type="number" class="my-3" style="font-weight: bold">
+                            @foreach (config('const.name_file.hasil') as $key => $hasil)
+                                <li wire:key='row-{{ $key }}' class="mt-3">{{ $hasil }}</li>
+                            @endforeach
+                        </ol>
+
+                        <h4 class="my-4" style="color: #001F8D">Pengajuan Berkas Tutup</h4>
+
+                        <ol type="number" class="my-3" style="font-weight: bold">
+                            @foreach (config('const.name_file.tutup') as $key => $tutup)
+                                <li wire:key='row-{{ $key }}' class="mt-3">{{ $tutup }}</li>
+                            @endforeach
+                        </ol>
+                    </div>
+                    <div class="col-lg-4 col-12 text-center d-lg-block d-none">
+                        <img class="m-auto" style="width: 700px; margin-left: 20px; margin-top: 500px;" src="{{ asset('assets/siberta/illustration.png') }}" alt="ilustrasi">
+                    </div>
+                </div>
             </div>
 
         </div>
@@ -85,15 +97,11 @@
     <section id="tutorial" class="about">
         <div class="container" data-aos="fade-up">
             <div class="col-lg-6 content order-last  order-lg-first">
-                <h3>VIDEO TUTORIAL</h3>
-                <h3>SISTEM INFORMASI BERKAS ADMINISTRASI TUGAS AKHIR </h3>
-                <p>Nonton video disamping,</p>
-                <p>untuk memahami tata cara</p>
-                <p>pengajuan menggunakan Aplikasi SIBERTA</p>
+                <h3>VIDEO PANDUAN</h3>
+                <p><b>Nonton video cara menggunakan siberta, untuk mengetahui lebih lanjut.</b></p>
                 <div class="col-lg-3 col-6">
                     <div class="stats-item text-center w-100 h-100">
-
-                        <p></p>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/h1J4vSn8bS4?si=kA0MKJodwLd-rxei" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                     </div>
                 </div>
             </div>
@@ -106,28 +114,24 @@
                 <span>Frequently Asked Questions FOR</span>
                 <h2>Frequently Asked Questions FOR</h2>
             </div>
-            <div class="section-header">
-                <span>SIBERTA</span>
-                <h2>SIBERTA</h2>
-            </div>
 
             <div class="row justify-content-center" data-aos="fade-up" data-aos-delay="200">
                 <div class="col-lg-10">
-
                     <div class="accordion accordion-flush" id="faqlist">
-
                         <div class="accordion-item">
                             <h3 class="accordion-header">
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#faq-content-1">
                                     <i class="bi bi-question-circle question-icon"></i>
-                                    Apasih sebenarnya SIBERTA?
+                                    APA ITU SIBERTA?
                                 </button>
                             </h3>
                             <div id="faq-content-1" class="accordion-collapse collapse" data-bs-parent="#faqlist">
                                 <div class="accordion-body">
                                     Aplikasi SIBERTA Adalah Singkatan dari Sistem Informasi Berkas Administrasi Tugas
                                     akhir yang mendukung dalam pelayanan bagi mahasiswa semester akhir.
+
+                                    Dimana mahasiswa yang dalam semeter akhir dapat mengumpulkan berkas proposal, hasil dan tutup pada aplikasi ini dengan mudah, dimana dan kapan pun.
                                 </div>
                             </div>
                         </div>
@@ -137,12 +141,12 @@
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#faq-content-2">
                                     <i class="bi bi-question-circle question-icon"></i>
-                                    ?
+                                    Bagai Maca Cara Melihat Berkas Mahasiswa?
                                 </button>
                             </h3>
                             <div id="faq-content-2" class="accordion-collapse collapse" data-bs-parent="#faqlist">
                                 <div class="accordion-body">
-                                    .
+                                    Untuk melihat berkas yang anda telah kumpulkan, anda dapat memasukkan kode berkas pada form "Masukkan ID Berkas", kode berkas di dapatkan pada saat mahasiswa telah mengumpulkan berkasnya, yang di kirim melalui email mahasiswa yang diberikan oleh pihak kampus.
                                 </div>
                             </div>
                         </div>
@@ -152,18 +156,20 @@
                                 <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#faq-content-3">
                                     <i class="bi bi-question-circle question-icon"></i>
-                                    ?
+                                    Bagai Mana Cara Mengumpulkan Berkas?
                                 </button>
                             </h3>
                             <div id="faq-content-3" class="accordion-collapse collapse" data-bs-parent="#faqlist">
                                 <div class="accordion-body">
-                                    .
+                                    Untuk mengumpulkan berkas, mahasiswa cukup menekan tombol "PENGAJUAN BERKAS",
+                                    lalu masukkan email, kemudian konfirmasi kode OTP yang terdapat pada email mahasiswa, selanjutnya mahasiswa akan diarahkan untuk memilih jenis berkas yang ingin dikumpulkan seperti proposal, hasil & tutup, kemudian mahasiswa harus memilih jenis-jenis file nya yang ingin di serahkan.
+
+                                    Setelah itu mahaiswa akan dikirim kan kode berkas yang berhasil di serahkan oleh mahasiswa.
                                 </div>
                             </div>
-
                         </div>
                     </div>
-
                 </div>
+            </div>
     </section>
 </div>
