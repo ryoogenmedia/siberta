@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Mahasiswa;
+use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -13,8 +14,25 @@ class MahasiswaTableSeeder extends Seeder
      */
     public function run(): void
     {
+        $akun1 = User::create([
+            'username' => 'Supriadi Bonang',
+            'email' => 'supriadi.unitama@gmail.com',
+            'roles' => 'user',
+            'email_verified_at' => now(),
+            'password' => bcrypt("supriadi.unitama@gmail.com*user"),
+        ]);
+
+        $akun2 = User::create([
+            'username' => 'Akbar Maulana',
+            'email' => 'sakbar.unitama@gmail.com',
+            'roles' => 'user',
+            'email_verified_at' => now(),
+            'password' => bcrypt("akbar.unitama@gmail.com*user"),
+        ]);
+
         $mahasiswa = [
             [
+                'user_id' => $akun1->id,
                 'name' => 'Supriadi Bonang',
                 'nim' => '2023990888373',
                 'program_studi' => 'TI',
@@ -25,6 +43,7 @@ class MahasiswaTableSeeder extends Seeder
             ],
 
             [
+                'user_id' => $akun2->id,
                 'name' => 'Akbar Maulana',
                 'nim' => '2023990888344',
                 'program_studi' => 'SI',

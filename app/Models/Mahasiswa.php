@@ -12,6 +12,7 @@ class Mahasiswa extends Model
     protected $table = 'mahasiswa';
 
     protected $fillable = [
+        'user_id',
         'name',
         'nim',
         'program_studi',
@@ -22,6 +23,7 @@ class Mahasiswa extends Model
     ];
 
     protected $casts = [
+        'user_id' => 'integer',
         'name' => 'string',
         'nim' => 'string',
         'program_studi' => 'string',
@@ -30,6 +32,10 @@ class Mahasiswa extends Model
         'address' => 'string',
         'entry_year' => 'string',
     ];
+
+    public function akun(){
+        return $this->belongsTo(User::class,'user_id','id')->withDefault();
+    }
 
     public function berkas(){
         return $this->hasMany(Berkas::class,'mahasiswa_id','id');

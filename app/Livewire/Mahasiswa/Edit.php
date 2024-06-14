@@ -3,6 +3,7 @@
 namespace App\Livewire\Mahasiswa;
 
 use App\Models\Mahasiswa;
+use App\Models\User;
 use Exception;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
@@ -16,8 +17,10 @@ class Edit extends Component
     public $tahunMasuk;
     public $programStudi;
     public $alamat;
+    public $roles = 'user';
 
     public $mahasiswaId;
+    public $akunId;
 
     public function rules(){
         return [
@@ -35,11 +38,21 @@ class Edit extends Component
         $this->validate();
 
         $mahasiswa = Mahasiswa::findOrFail($this->mahasiswaId);
+        $akun = User::findOrFail($this->akunId);
 
         try{
             DB::beginTransaction();
 
+            $akun->update([
+                'username' => $this->namaMahasiswa,
+                'email' => $this->email,
+                'roles' => $this->roles,
+                'email_verified_at' => now(),
+                'password' => bcrypt($this->email + "*" + $this->roles),
+            ]);
+
             $mahasiswa->update([
+                'user_id' => $akun->id,
                 'name' => $this->namaMahasiswa,
                 'nim' => $this->nim,
                 'phone' => $this->nomorPonsel,
@@ -71,6 +84,7 @@ class Edit extends Component
         $mahasiswa = Mahasiswa::findOrFail($id);
 
         if($mahasiswa){
+            $this->akunId = $mahasiswa->user_id;
             $this->mahasiswaId = $mahasiswa->id;
             $this->namaMahasiswa = $mahasiswa->name;
             $this->nomorPonsel = $mahasiswa->phone;

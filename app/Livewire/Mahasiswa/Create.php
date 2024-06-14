@@ -3,6 +3,7 @@
 namespace App\Livewire\Mahasiswa;
 
 use App\Models\Mahasiswa;
+use App\Models\User;
 use Exception;
 use Illuminate\Support\Facades\DB;
 use Livewire\Component;
@@ -16,6 +17,8 @@ class Create extends Component
     public $tahunMasuk;
     public $programStudi;
     public $alamat;
+
+    public $roles = 'user';
 
     public function rules(){
         return [
@@ -35,7 +38,16 @@ class Create extends Component
         try{
             DB::beginTransaction();
 
+            $akun = User::create([
+                'username' => $this->namaMahasiswa,
+                'email' => $this->email,
+                'roles' => $this->roles,
+                'email_verified_at' => now(),
+                'password' => bcrypt($this->email + "*" + $this->roles),
+            ]);
+
             Mahasiswa::create([
+                'user_id' => $akun->id,
                 'name' => $this->namaMahasiswa,
                 'nim' => $this->nim,
                 'phone' => $this->nomorPonsel,

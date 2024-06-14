@@ -51,8 +51,8 @@ class Index extends Component
         $query = User::query()
             ->when(!$this->sorts, fn ($query) => $query->first())
             ->when($this->filters['search'], function ($query, $search) {
-                $query->whereAny(['username','roles','email'], 'LIKE', "%$search%");
-            });
+                $query->where('roles','admin')->whereAny(['username','roles','email'], 'LIKE', "%$search%");
+            })->where('roles','admin');
 
         return $this->applyPagination($query);
     }
