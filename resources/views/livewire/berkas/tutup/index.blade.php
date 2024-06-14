@@ -1,9 +1,9 @@
 <div>
-    <x-slot name="title">Berkas Mahasiswa</x-slot>
+    <x-slot name="title">Berkas Tutup Mahasiswa</x-slot>
 
-    <x-slot name="pageTitle">Berkas Mahasiswa</x-slot>
+    <x-slot name="pageTitle">Berkas Tutup Mahasiswa</x-slot>
 
-    <x-slot name="pagePretitle">Kelola data berkas mahasiswa.</x-slot>
+    <x-slot name="pagePretitle">Kelola data berkas tutup mahasiswa.</x-slot>
 
     <x-alert />
 
@@ -23,7 +23,7 @@
                     >
                         <option selected value="">- Pilih Berkas -</option>
 
-                        @foreach (config('const.name_file') as $berkas)
+                        @foreach (config('const.name_file.tutup') as $berkas)
                             <option wire:key='row-{{ $berkas }}' value="{{ $berkas }}">{{ ucwords($berkas) }}</option>
                         @endforeach
                     </x-form.select>
@@ -246,7 +246,7 @@
                                         </button>
 
                                         @unless ($row->status_file == 'revision')
-                                            <a style="width: 120px" class="btn bg-danger-lt btn-sm" href="{{ route('berkas.revision', $row->id) }}">Revisi Berkas</a>
+                                            <a style="width: 120px" class="btn bg-danger-lt btn-sm" href="{{ route('berkas.tutup.revision', $row->id) }}">Revisi Berkas</a>
                                         @endunless
 
                                         @if ($row->status_file == 'revision')

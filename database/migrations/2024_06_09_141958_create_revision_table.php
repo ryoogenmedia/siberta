@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('gathering_limit_date')->nullable();
             $table->string('provider_name')->nullable();
             $table->text('note_revision')->nullable();
+            $table->string('category')->nullable();
             $table->timestamps();
         });
     }

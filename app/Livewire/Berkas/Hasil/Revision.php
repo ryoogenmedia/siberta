@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\Berkas;
+namespace App\Livewire\Berkas\Hasil;
 
 use App\Models\Berkas;
 use App\Models\Revision as ModelsRevision;
@@ -16,6 +16,7 @@ class Revision extends Component
     public $namaPengirim;
     public $catatanRevisi;
 
+    public $kategori = 'hasil';
     public $statusFile = 'revision';
 
     public $berkasId;
@@ -50,6 +51,7 @@ class Revision extends Component
                 'gathering_limit_date' => $this->batasTanggalRevisi,
                 'note_revision' => $this->catatanRevisi,
                 'provider_name' => $this->namaPengirim,
+                'category' => $this->kategori,
             ]);
 
             DB::commit();
@@ -67,7 +69,7 @@ class Revision extends Component
             'detail' => "revisi berkas berhasil ditambah.",
         ]);
 
-        return redirect()->route('berkas.index');
+        return redirect()->route('berkas.hasil.index');
     }
 
     public function mount($id){
@@ -79,6 +81,6 @@ class Revision extends Component
 
     public function render()
     {
-        return view('livewire.berkas.revision');
+        return view('livewire.berkas.hasil.revision');
     }
 }

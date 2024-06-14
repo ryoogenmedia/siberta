@@ -12,11 +12,31 @@ return [
 
     [
         'title' => 'Berkas Mahasiswa',
+        'description' => 'Menampilkan berkas mahasiswa.',
         'icon' => 'newspaper',
-        'route-name' => 'berkas.index',
+        'route-name' => 'berkas.proposal.index',
         'is-active' => 'berkas*',
-        'description' => 'Untuk kelola data berkas mahasiswa.',
-        'roles' => ['admin'],
+        'roles' => ['admin', 'user'],
+        'sub-menus' => [
+            [
+                'title' => 'Proposal',
+                'description' => 'Melihat data proposal mahasiswa.',
+                'route-name' => 'berkas.proposal.index',
+                'is-active' => 'berkas.proposal*',
+            ],
+            [
+                'title' => 'Hasil',
+                'description' => 'Melihat data berkas hasil mahasiswa.',
+                'route-name' => 'berkas.hasil.index',
+                'is-active' => 'berkas.hasil*',
+            ],
+            [
+                'title' => 'Tutup',
+                'description' => 'Melihat data berkas tutp mahasiswa.',
+                'route-name' => 'berkas.tutup.index',
+                'is-active' => 'berkas.tutup*',
+            ],
+        ],
     ],
 
     [
@@ -67,6 +87,5 @@ return [
                 'is-active' => 'setting.account*',
             ],
         ],
-
     ],
 ];

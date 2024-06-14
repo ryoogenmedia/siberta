@@ -19,6 +19,7 @@ class Revision extends Model
         'gathering_limit_date',
         'note_revision',
         'provider_name',
+        'category',
     ];
 
     protected $casts = [
@@ -29,6 +30,7 @@ class Revision extends Model
         'gathering_limit_date' => 'datetime:Y-m-d H:i:s',
         'note_revision' => 'string',
         'provider_name' => 'string',
+        'category' => 'string',
     ];
 
     public function mahasiswa(){

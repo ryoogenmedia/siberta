@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('status_file')->nullable();
             $table->string('date_upload')->nullable();
             $table->string('time_upload')->nullable();
+            $table->string('category')->nullable();
             $table->text('note_mahasiswa')->nullable();
         });
     }

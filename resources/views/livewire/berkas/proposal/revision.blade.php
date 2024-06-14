@@ -6,7 +6,7 @@
     <x-slot name="pageTitle">Revisi Berkas</x-slot>
 
     <x-slot name="button">
-        <x-datatable.button.back name="Kembali" :route="route('berkas.index')" />
+        <x-datatable.button.back name="Kembali" :route="route('berkas.proposal.index')" />
     </x-slot>
 
     <x-alert />

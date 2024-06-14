@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\Berkas;
+namespace App\Livewire\Berkas\Tutup;
 
 use App\Livewire\Traits\DataTable\WithBulkActions;
 use App\Livewire\Traits\DataTable\WithCachedRows;
@@ -46,7 +46,7 @@ class Index extends Component
             'detail' => "$deleteCount data berkas berhasil dihapus.",
         ]);
 
-        return redirect()->route('berkas.index');
+        return redirect()->route('berkas.tutup.index');
     }
 
     public function approve($id){
@@ -133,35 +133,35 @@ class Index extends Component
         $query = Berkas::query()
             ->when(!$this->sorts, fn ($query) => $query->first())
             ->when($this->filters['tipe_dokumen'], function($query, $type){
-                $query->where('type_document', $type);
+                $query->where('category','tutup')->where('type_document', $type);
             })
             ->when($this->filters['status_file'], function($query, $status){
-                $query->where('status_file', $status);
+                $query->where('category','tutup')->where('status_file', $status);
             })
             ->when($this->filters['tanggal_awal'], function ($query, $tanggalAwal) {
-                $query->where('date_upload', '>=', $tanggalAwal);
+                $query->where('category','tutup')->where('date_upload', '>=', $tanggalAwal);
             })
             ->when($this->filters['tanggal_akhir'], function ($query, $tanggalAkhir) {
-                $query->where('date_upload', '<=', $tanggalAkhir);
+                $query->where('category','tutup')->where('date_upload', '<=', $tanggalAkhir);
             })
             ->when($this->filters['nama_file'], function($query, $namaFile){
-                $query->where('name_file', $namaFile);
+                $query->where('category','tutup')->where('name_file', $namaFile);
             })
             ->when($this->filters['nim'], function($query, $nim){
-                $query->whereHas('mahasiswa', function($query) use ($nim){
+                $query->where('category','tutup')->whereHas('mahasiswa', function($query) use ($nim){
                     $query->where('nim', $nim);
                 });
             })
             ->when($this->filters['program_studi'], function($query, $programStudi){
-                $query->whereHas('mahasiswa', function($query) use ($programStudi){
+                $query->where('category','tutup')->whereHas('mahasiswa', function($query) use ($programStudi){
                     $query->where('program_studi', $programStudi);
                 });
             })
             ->when($this->filters['search'], function ($query, $search) {
-                $query->whereHas('mahasiswa', function($query) use ($search){
+                $query->where('category','tutup')->whereHas('mahasiswa', function($query) use ($search){
                     $query->whereAny(['name','nim','program_studi'], 'LIKE', "%$search%");
                 })->orWhereAny(['name_file','type_document','status_file','date_upload','time_upload','note_mahasiswa'], 'LIKE', "%$search%");
-            });
+            })->where('category','tutup');
 
         return $this->applyPagination($query);
     }
@@ -191,6 +191,6 @@ class Index extends Component
 
     public function render()
     {
-        return view('livewire.berkas.index');
+        return view('livewire.berkas.tutup.index');
     }
 }
