@@ -3,8 +3,9 @@
         <div class="container">
             <div class="row gy-4 d-flex justify-content-between">
                 <div class="col-lg-6 order-2 order-lg-1 d-flex flex-column justify-content-center">
+                    <img class="mb-3" style="width: 280px" src="{{ asset('assets/siberta/logo-siberta-light.svg') }}" alt="siberta">
                     <h2 data-aos="fade-up">SISTEM INFORMASI BERKAS ADMINISTRASI TUGAS AKHIR </h2>
-                    <p data-aos="fade-up" data-aos-delay="100">Layanan Pemberkasan Tugas Akhir Universitas Teknologi
+                    <p data-aos="fade-up" data-aos-delay="100">Sistem Layanan Pemberkasan Tugas Akhir Universitas Teknologi
                         Akba Makassar</p>
 
                     <form action="#" class="form-search d-flex align-items-stretch mb-3" data-aos="fade-up"
@@ -17,38 +18,36 @@
 
                         <div class="col-lg-5 col-6">
                             <div class="">
-                                <p>Atau Buat Pengajuan Baru</p>
                                 <button type="submit" class="btn btn-primary">PENGAJUAN BERKAS</button>
                             </div>
-                        </div><!-- End Stats Item -->
+                        </div>
 
                         <div class="col-lg-3 col-6">
                             <div class="stats-item text-center w-100 h-100">
 
                                 <p></p>
                             </div>
-                        </div><!-- End Stats Item -->
+                        </div>
 
                         <div class="col-lg-3 col-6">
                             <div class="stats-item text-center w-100 h-100">
 
                                 <p></p>
                             </div>
-                        </div><!-- End Stats Item -->
+                        </div>
 
                         <div class="col-lg-3 col-6">
                             <div class="stats-item text-center w-100 h-100">
 
                                 <p></p>
                             </div>
-                        </div><!-- End Stats Item -->
+                        </div>
 
                     </div>
                 </div>
                 <div class="col-lg-5 order-1 order-lg-2 hero-img" data-aos="zoom-out">
                     <img src="{{ asset('img/hero-img.png') }}" class="img-fluid mb-3 mb-lg-0" alt="">
                 </div>
-
             </div>
         </div>
     </section>
@@ -96,16 +95,13 @@
 
                         <p></p>
                     </div>
-                </div><!-- End Stats Item -->
-
+                </div>
             </div>
-
         </div>
     </section>
 
     <section id="faq" class="faq">
         <div class="container" data-aos="fade-up">
-
             <div class="section-header">
                 <span>Frequently Asked Questions FOR</span>
                 <h2>Frequently Asked Questions FOR</h2>
@@ -113,7 +109,6 @@
             <div class="section-header">
                 <span>SIBERTA</span>
                 <h2>SIBERTA</h2>
-
             </div>
 
             <div class="row justify-content-center" data-aos="fade-up" data-aos-delay="200">
@@ -135,7 +130,7 @@
                                     akhir yang mendukung dalam pelayanan bagi mahasiswa semester akhir.
                                 </div>
                             </div>
-                        </div><!-- # Faq item-->
+                        </div>
 
                         <div class="accordion-item">
                             <h3 class="accordion-header">
@@ -150,7 +145,7 @@
                                     .
                                 </div>
                             </div>
-                        </div><!-- # Faq item-->
+                        </div>
 
                         <div class="accordion-item">
                             <h3 class="accordion-header">
@@ -164,7 +159,7 @@
                                 <div class="accordion-body">
                                     .
                                 </div>
-                            </div><!-- # Faq item-->
+                            </div>
 
                         </div>
                     </div>
