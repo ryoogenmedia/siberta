@@ -13,12 +13,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::redirect('/', '/login');
+Route::redirect('/register','/login');
 
-Route::get('/lading-page', function () {
-    return view('layouts/base-frontend');
+/**
+ * Frontend Namespace
+ */
+
+Route::middleware('guest')->namespace('App\Livewire\Frontend')->group(function () {
+    Route::get('/', Home\Index::class)->name('frontend.home');
 });
-
 
 Route::middleware('auth', 'verified', 'force.logout')->namespace('App\Livewire')->group(function () {
     /**
