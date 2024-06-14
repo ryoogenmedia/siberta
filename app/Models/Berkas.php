@@ -22,6 +22,7 @@ class Berkas extends Model
         'time_upload',
         'note_mahasiswa',
         'category',
+        'code_document',
     ];
 
     protected $casts = [
@@ -34,6 +35,7 @@ class Berkas extends Model
         'time_upload' => 'datetime:H:i:s',
         'note_mahasiswa' => 'string',
         'category' => 'string',
+        'code_document' => 'string',
     ];
 
     public function revision(){

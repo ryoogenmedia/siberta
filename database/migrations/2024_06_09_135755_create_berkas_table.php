@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('date_upload')->nullable();
             $table->string('time_upload')->nullable();
             $table->string('category')->nullable();
+            $table->string('code_document')->nullable();
             $table->text('note_mahasiswa')->nullable();
         });
     }
