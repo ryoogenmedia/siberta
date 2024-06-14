@@ -72,8 +72,23 @@ Route::middleware('auth', 'verified', 'force.logout')->namespace('App\Livewire')
      * revision / revisi
      */
     Route::namespace('Revision')->prefix('revisi-berkas')->name('revision.')->group(function () {
-        Route::get('/', Index::class)->name('index');
-        Route::get('/sunting/{id}', Edit::class)->name('edit');
+        Route::redirect('/', 'revisi-berkas/proposal');
+
+        Route::namespace('Proposal')->prefix('proposal')->name('proposal.')->group(function(){
+            Route::get('/', Index::class)->name('index');
+            Route::get('/sunting/{id}', Edit::class)->name('edit');
+        });
+
+        Route::namespace('Hasil')->prefix('hasil')->name('hasil.')->group(function(){
+            Route::get('/', Index::class)->name('index');
+            Route::get('/sunting/{id}', Edit::class)->name('edit');
+        });
+
+        Route::namespace('Tutup')->prefix('tutup')->name('tutup.')->group(function(){
+            Route::get('/', Index::class)->name('index');
+            Route::get('/sunting/{id}', Edit::class)->name('edit');
+        });
+
     });
 
     /**

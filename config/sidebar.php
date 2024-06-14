@@ -41,11 +41,31 @@ return [
 
     [
         'title' => 'Revisi Berkas',
+        'description' => 'Menampilkan data revisi berkas mahasiswa.',
         'icon' => 'file-contract',
-        'route-name' => 'revision.index',
+        'route-name' => 'revision.proposal.index',
         'is-active' => 'revision*',
-        'description' => 'Untuk kelola data revisi  mahasiswa.',
-        'roles' => ['admin'],
+        'roles' => ['admin', 'user'],
+        'sub-menus' => [
+            [
+                'title' => 'Proposal',
+                'description' => 'Melihat data revisi proposal mahasiswa.',
+                'route-name' => 'revision.proposal.index',
+                'is-active' => 'revision.proposal*',
+            ],
+            [
+                'title' => 'Hasil',
+                'description' => 'Melihat data revisi berkas hasil mahasiswa.',
+                'route-name' => 'revision.hasil.index',
+                'is-active' => 'revision.hasil*',
+            ],
+            [
+                'title' => 'Tutup',
+                'description' => 'Melihat data revisi berkas tutp mahasiswa.',
+                'route-name' => 'revision.tutup.index',
+                'is-active' => 'revision.tutup*',
+            ],
+        ],
     ],
 
     [

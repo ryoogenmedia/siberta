@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\Revision;
+namespace App\Livewire\Revision\Tutup;
 
 use App\Models\Berkas;
 use App\Models\Revision as ModelsRevision;
@@ -16,6 +16,7 @@ class Edit extends Component
     public $namaPengirim;
     public $catatanRevisi;
 
+    public $kategori = 'tutup';
     public $statusFile = 'revision';
 
     public $berkasId;
@@ -53,6 +54,7 @@ class Edit extends Component
                 'gathering_limit_date' => $this->batasTanggalRevisi,
                 'note_revision' => $this->catatanRevisi,
                 'provider_name' => $this->namaPengirim,
+                'category' => $this->kategori,
             ]);
 
             DB::commit();
@@ -70,7 +72,7 @@ class Edit extends Component
             'detail' => "revisi berkas berhasil disunting.",
         ]);
 
-        return redirect()->route('revision.index');
+        return redirect()->route('revision.tutup.index');
     }
 
     public function mount($id){
@@ -89,6 +91,6 @@ class Edit extends Component
 
     public function render()
     {
-        return view('livewire.revision.edit');
+        return view('livewire.revision.tutup.edit');
     }
 }

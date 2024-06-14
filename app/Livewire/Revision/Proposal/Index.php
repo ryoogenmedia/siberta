@@ -1,13 +1,12 @@
 <?php
 
-namespace App\Livewire\Revision;
+namespace App\Livewire\Revision\Proposal;
 
 use App\Livewire\Traits\DataTable\WithBulkActions;
 use App\Livewire\Traits\DataTable\WithCachedRows;
 use App\Livewire\Traits\DataTable\WithPerPagePagination;
 use App\Livewire\Traits\DataTable\WithSorting;
 use App\Models\Berkas;
-use App\Models\Revision;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Attributes\Computed;
 use Livewire\Component;
@@ -100,39 +99,39 @@ class Index extends Component
         $query = Berkas::where('status_file','revision')
             ->when(!$this->sorts, fn ($query) => $query->first())
             ->when($this->filters['tipe_dokumen'], function($query, $type){
-                $query->where('status_file', 'revision')->where('type_document', $type);
+                $query->where('category','proposal')->where('status_file', 'revision')->where('type_document', $type);
             })
             ->when($this->filters['status_file'], function($query, $status){
-                $query->where('status_file', 'revision')->where('status_file', $status);
+                $query->where('category','proposal')->where('status_file', 'revision')->where('status_file', $status);
             })
             ->when($this->filters['tanggal_awal'], function ($query, $tanggalAwal) {
-                $query->where('status_file', 'revision')->whereHas('revision', function($query) use ($tanggalAwal){
+                $query->where('category','proposal')->where('status_file', 'revision')->whereHas('revision', function($query) use ($tanggalAwal){
                     $query->where('date_revision', '>=', $tanggalAwal);
                 });
             })
             ->when($this->filters['tanggal_akhir'], function ($query, $tanggalAkhir) {
-                $query->where('status_file', 'revision')->whereHas('revision', function($query) use ($tanggalAkhir){
+                $query->where('category','proposal')->where('status_file', 'revision')->whereHas('revision', function($query) use ($tanggalAkhir){
                     $query->where('date_revision', '<=', $tanggalAkhir);
                 });
             })
             ->when($this->filters['nama_file'], function($query, $namaFile){
-                $query->where('status_file', 'revision')->where('name_file', $namaFile);
+                $query->where('category','proposal')->where('status_file', 'revision')->where('name_file', $namaFile);
             })
             ->when($this->filters['nim'], function($query, $nim){
-                $query->where('status_file', 'revision')->whereHas('mahasiswa', function($query) use ($nim){
+                $query->where('category','proposal')->where('status_file', 'revision')->whereHas('mahasiswa', function($query) use ($nim){
                     $query->where('nim', $nim);
                 });
             })
             ->when($this->filters['program_studi'], function($query, $programStudi){
-                $query->where('status_file', 'revision')->whereHas('mahasiswa', function($query) use ($programStudi){
+                $query->where('category','proposal')->where('status_file', 'revision')->whereHas('mahasiswa', function($query) use ($programStudi){
                     $query->where('program_studi', $programStudi);
                 });
             })
             ->when($this->filters['search'], function ($query, $search) {
-                $query->where('status_file', 'revision')->whereHas('mahasiswa', function($query) use ($search){
+                $query->where('category','proposal')->where('status_file', 'revision')->whereHas('mahasiswa', function($query) use ($search){
                     $query->whereAny(['name','nim','program_studi'], 'LIKE', "%$search%");
                 })->orWhereAny(['name_file','type_document','status_file','date_upload','time_upload','note_mahasiswa'], 'LIKE', "%$search%");
-            })->where('status_file', 'revision');
+            })->where('category','proposal')->where('status_file', 'revision');
 
         return $this->applyPagination($query);
     }
@@ -162,6 +161,6 @@ class Index extends Component
 
     public function render()
     {
-        return view('livewire.revision.index');
+        return view('livewire.revision.proposal.index');
     }
 }

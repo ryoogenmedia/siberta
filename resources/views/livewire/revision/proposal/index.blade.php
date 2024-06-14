@@ -1,9 +1,9 @@
 <div>
-    <x-slot name="title">Revisi Berkas</x-slot>
+    <x-slot name="title">Revisi Berkas Proposal</x-slot>
 
-    <x-slot name="pageTitle">Revisi Berkas</x-slot>
+    <x-slot name="pageTitle">Revisi Berkas Proposal</x-slot>
 
-    <x-slot name="pagePretitle">Revisi data berkas mahasiswa.</x-slot>
+    <x-slot name="pagePretitle">Revisi data berkas proposal mahasiswa.</x-slot>
 
     <x-alert />
 
@@ -23,7 +23,7 @@
                     >
                         <option selected value="">- Pilih Berkas -</option>
 
-                        @foreach (config('const.name_file') as $berkas)
+                        @foreach (config('const.name_file.proposal') as $berkas)
                             <option wire:key='row-{{ $berkas }}' value="{{ $berkas }}">{{ ucwords($berkas) }}</option>
                         @endforeach
                     </x-form.select>
@@ -192,7 +192,7 @@
                             <td style="width: 40px">
                                 <div class="d-flex w-100">
                                     <div class="d-flex flex-column">
-                                        <a style="width: 120px" class="btn bg-primary-lt btn-sm mb-2" href="{{ route('revision.edit', $row->id) }}">
+                                        <a style="width: 120px" class="btn bg-primary-lt btn-sm mb-2" href="{{ route('revision.proposal.edit', $row->id) }}">
                                             Sunting Revisi
                                         </a>
 
