@@ -21,31 +21,9 @@
                                 <button type="submit" class="btn btn-primary">PENGAJUAN BERKAS</button>
                             </div>
                         </div>
-
-                        <div class="col-lg-3 col-6">
-                            <div class="stats-item text-center w-100 h-100">
-
-                                <p></p>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-3 col-6">
-                            <div class="stats-item text-center w-100 h-100">
-
-                                <p></p>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-3 col-6">
-                            <div class="stats-item text-center w-100 h-100">
-
-                                <p></p>
-                            </div>
-                        </div>
-
                     </div>
                 </div>
-                <div class="col-lg-5 order-1 order-lg-2 hero-img" data-aos="zoom-out">
+                <div class="col-lg-5 order-1 order-lg-2 hero-img d-lg-block d-none" data-aos="zoom-out">
                     <img src="{{ asset('img/hero-img.png') }}" class="img-fluid mb-3 mb-lg-0" alt="">
                 </div>
             </div>
@@ -56,7 +34,7 @@
         <div class="container" data-aos="fade-up">
             <div class="col-lg-6 content order-last  order-lg-first">
                 <h3>Persyaratan Layanan</h3>
-                <p><b>Pilih layanan di bawah untuk melihat Persyaratan tiap Layanan</b></p>
+                <p><b>Perhatikan persyaratan dalam pengumpulan berkas mahasiswa!</b></p>
 
                 <div class="row">
                     <div class="col-lg-8 col-12">
