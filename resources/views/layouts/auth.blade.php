@@ -12,11 +12,13 @@
                     <div class="container-tight">
                         <div class="text-center mb-4">
                             <a href="." class="navbar-brand navbar-brand-autodark">
-                                <img src="{{ asset('assets/siberta/logo-siberta.svg') }}" alt="">
+                                <img style="width: 300px" src="{{ asset('assets/siberta/logo-siberta.svg') }}" alt="">
                             </a>
                         </div>
 
                         <div>
+                            <x-alert/>
+
                             @if ($errors->any())
                                 <div class="bg-white alert alert-warning alert-dismissible" role="alert">
                                     <div class="d-flex ">

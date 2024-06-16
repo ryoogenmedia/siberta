@@ -24,7 +24,7 @@ class MahasiswaTableSeeder extends Seeder
 
         $akun2 = User::create([
             'username' => 'Akbar Maulana',
-            'email' => 'sakbar.unitama@gmail.com',
+            'email' => 'akbar.unitama@gmail.com',
             'roles' => 'user',
             'email_verified_at' => now(),
             'password' => bcrypt("akbar.unitama@gmail.com*user"),

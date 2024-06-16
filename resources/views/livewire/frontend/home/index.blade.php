@@ -18,7 +18,7 @@
 
                         <div class="col-lg-5 col-6">
                             <div class="">
-                                <button type="submit" class="btn btn-primary">PENGAJUAN BERKAS</button>
+                                <a href="{{ route('check.mahasiswa') }}" class="btn btn-primary">PENGAJUAN BERKAS</a>
                             </div>
                         </div>
                     </div>

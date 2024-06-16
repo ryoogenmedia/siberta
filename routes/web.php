@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MahasiswaCheckController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,16 +20,29 @@ Route::redirect('/register','/login');
  * Frontend Namespace
  */
 
+Route::middleware('guest')->group(function(){
+    Route::get('/check-mahasiswa',[MahasiswaCheckController::class,'checkMahasiswa'])->name('check.mahasiswa');
+    Route::post('/check-email', [MahasiswaCheckController::class,'checkEmail'])->name('check.email');
+    Route::get('/otp/{mahasiswa}', [MahasiswaCheckController::class,'OtpView'])->name('otp.view');
+    Route::post('/otp/check', [MahasiswaCheckController::class,'OtpCheck'])->name('otp.check');
+});
+
 Route::middleware('guest')->namespace('App\Livewire\Frontend')->group(function () {
     Route::get('/', Home\Index::class)->name('frontend.home');
 });
 
-Route::middleware('auth', 'verified', 'force.logout')->namespace('App\Livewire')->group(function () {
+Route::middleware('auth','roles:user')->namespace('App\Livewire\Frontend')->group(function(){
+    Route::namespace('Service')->prefix('pelayanan-mahasiswa')->name('service-mahasiswa.')->group(function(){
+        Route::get('/upload-berkas', UploadBerkas::class)->name('upload-berkas');
+    });
+});
+
+Route::middleware('auth', 'verified', 'force.logout', 'roles:admin')->namespace('App\Livewire')->group(function () {
     /**
      * beranda / home
      */
     Route::get('beranda', Home\Index::class)->name('home')
-        ->middleware('roles:admin,user');
+        ->middleware('roles:admin');
 
     /**
      * mahasiswa
