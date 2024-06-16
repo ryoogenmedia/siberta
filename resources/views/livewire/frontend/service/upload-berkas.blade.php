@@ -104,11 +104,7 @@
                                                 @endisset
                                             </div>
                                             <div class="mt-3">
-                                                <x-form.input
-                                                    wire:change="changeBerkas({{ $berkas }})"
-                                                    name="{{ $berkas }}"
-                                                    type="file"
-                                                />
+                                                <button class="btn btn-primary">Upload File</button>
                                             </div>
                                         </div>
                                     </div>

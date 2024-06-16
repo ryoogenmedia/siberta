@@ -8,9 +8,12 @@ use App\Models\Revision;
 use Livewire\Attributes\Layout;
 use Livewire\Attributes\Title;
 use Livewire\Component;
+use Livewire\WithFileUploads;
 
 class UploadBerkas extends Component
 {
+    use WithFileUploads;
+
     #[Title('Upload Berkas')]
     #[Layout('layouts.base-service')]
 
@@ -19,6 +22,8 @@ class UploadBerkas extends Component
     public $mahasiswaId;
 
     public Revision $revision;
+    public $fileBerkas;
+    public $typeBerkas;
 
     public function resetInfoRevision(){
         $this->reset('revision');
