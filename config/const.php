@@ -21,7 +21,7 @@ return [
     'name_file' => [
         'proposal' => [
             'lembar persetujuan proposal',
-            'surat keterangan administrasi pembayaran dari bauk',
+            'surat keterangan administrasi pembayaran dari bauk (proposal)',
             'lembar konsultasi pembimbing 1',
             'lembar konsultasi pembimbing 2',
             'kartu rencana studi (KRS)',
@@ -31,7 +31,7 @@ return [
 
         'hasil' => [
             'lembar persetujuan ujian hasil',
-            'surat keterangan administrasi pembayaran dari bauk',
+            'surat keterangan administrasi pembayaran dari bauk (hasil)',
             'lembar konsultasi -pembimbing 1',
             'lembar konsultasi -pembimbing 2',
             'KARTU RENCANA STUDI (KRS)',
@@ -40,7 +40,7 @@ return [
 
         'tutup' => [
             'lembar persetujuan ujian hasil',
-            'surat keterangan administrasi pembayaran dari bauk',
+            'surat keterangan administrasi pembayaran dari bauk (tutup)',
             'lembar konsultasi -pembimbing 1',
             'lembar konsultasi -pembimbing 2',
             'KARTU RENCANA STUDI (KRS)',

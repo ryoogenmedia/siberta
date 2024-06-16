@@ -55,7 +55,7 @@ class BerkasTableSeeder extends Seeder
             [
                 'mahasiswa_id' => '2',
                 'type_document' => 'PDF',
-                'name_file' => 'surat keterangan administrasi pembayaran dari bauk',
+                'name_file' => 'surat keterangan administrasi pembayaran dari bauk (hasil)',
                 'status_file' => 'pending',
                 'file' => 'berkas-mahasiswa/berkas2.pdf',
                 'date_upload' => Carbon::now()->format('Y-m-d'),
