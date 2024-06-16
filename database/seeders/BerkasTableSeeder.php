@@ -24,7 +24,8 @@ class BerkasTableSeeder extends Seeder
                 'time_upload' => Carbon::now()->format('H:i:s'),
                 'file' => 'berkas-mahasiswa/berkas1.pdf',
                 'note_mahasiswa' => 'Assalamulaikum bapak dan ibu dosen, saya ingin menyerahkan lembar persetujuan proposal saya 🙏',
-                'category' => 'proposal'
+                'category' => 'proposal',
+                'code_document' => code_document(),
             ],
             [
                 'mahasiswa_id' => '2',
@@ -36,6 +37,7 @@ class BerkasTableSeeder extends Seeder
                 'time_upload' => Carbon::now()->format('H:i:s'),
                 'note_mahasiswa' => 'Assalamulaikum bapak dan ibu dosen, saya ingin menyerahkan lembar persetujuan proposal saya 🙏',
                 'category' => 'proposal',
+                'code_document' => code_document(),
             ],
             // BERKAS HASIL
             [
@@ -48,6 +50,7 @@ class BerkasTableSeeder extends Seeder
                 'time_upload' => Carbon::now()->format('H:i:s'),
                 'note_mahasiswa' => 'Assalamulaikum bapak dan ibu dosen, saya ingin menyerahkan lembar persetujuan proposal saya 🙏',
                 'category' => 'hasil',
+                'code_document' => code_document(),
             ],
             [
                 'mahasiswa_id' => '2',
@@ -59,6 +62,7 @@ class BerkasTableSeeder extends Seeder
                 'time_upload' => Carbon::now()->format('H:i:s'),
                 'note_mahasiswa' => 'Assalamulaikum bapak dan ibu dosen, saya ingin menyerahkan lembar persetujuan proposal saya 🙏',
                 'category' => 'hasil',
+                'code_document' => code_document(),
             ],
             // BERKAS TUTUP
             [
@@ -71,6 +75,7 @@ class BerkasTableSeeder extends Seeder
                 'time_upload' => Carbon::now()->format('H:i:s'),
                 'note_mahasiswa' => 'Assalamulaikum bapak dan ibu dosen, saya ingin menyerahkan lembar persetujuan proposal saya 🙏',
                 'category' => 'tutup',
+                'code_document' => code_document(),
             ],
             [
                 'mahasiswa_id' => '2',
@@ -82,6 +87,7 @@ class BerkasTableSeeder extends Seeder
                 'time_upload' => Carbon::now()->format('H:i:s'),
                 'note_mahasiswa' => 'Assalamulaikum bapak dan ibu dosen, saya ingin menyerahkan lembar persetujuan proposal saya 🙏',
                 'category' => 'tutup',
+                'code_document' => code_document(),
             ],
         ];
 

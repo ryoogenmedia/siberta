@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Berkas;
 use App\Models\Otp;
 
 if (!function_exists('otp_code')) {
@@ -20,6 +21,21 @@ if (!function_exists('otp_code')) {
             $random = substr(str_shuffle("0123456789"), 0, $digits);
 
             if (!Otp::where('code_otp', $random)->first()) {
+                return $random;
+            }
+        }
+    }
+}
+
+if (!function_exists('code_document')) {
+    function code_document()
+    {
+        $x = true;
+        while ($x) {
+            $digits = 8;
+            $random = substr(str_shuffle("0123456789ABCDEFGHIJKLMNOPQRSTUVWYXZ"), 0, $digits);
+
+            if (!Berkas::where('code_document', $random)->first()) {
                 return $random;
             }
         }
