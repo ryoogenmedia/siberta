@@ -14,7 +14,7 @@
     <div class="page-body">
         <div class="container-xl">
             <div class="row justify-content-center">
-                <div class="col-4">
+                <div class="col-lg-4 col-12">
                     <div class="card">
                         <div class="card-body">
                             <div class="divide-y">
@@ -93,7 +93,7 @@
                     </div>
                 </div>
 
-                <div class="col-8">
+                <div class="col-lg-8 col-12">
                     <div class="card">
                         <div class="card-header d-flex justify-content-end">
                             <button wire:click='downloadAllFile' class="btn btn-md btn-green">Download Semua File <i class="ms-2 las la-download font-weight-bold"></i></button>
