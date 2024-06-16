@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\LacakBerkasController;
 use App\Http\Controllers\MahasiswaCheckController;
 use Illuminate\Support\Facades\Route;
 
@@ -17,14 +18,17 @@ use Illuminate\Support\Facades\Route;
 Route::redirect('/register','/login');
 
 /**
- * Frontend Namespace
+ * ROUTE WITH CONTROLLER
  */
-
 Route::middleware('guest')->group(function(){
     Route::get('/check-mahasiswa',[MahasiswaCheckController::class,'checkMahasiswa'])->name('check.mahasiswa');
     Route::post('/check-email', [MahasiswaCheckController::class,'checkEmail'])->name('check.email');
+
     Route::get('/otp/{mahasiswa}', [MahasiswaCheckController::class,'OtpView'])->name('otp.view');
     Route::post('/otp/check', [MahasiswaCheckController::class,'OtpCheck'])->name('otp.check');
+
+    Route::post('/lacak/berkas', [LacakBerkasController::class,'lacak'])->name('lacak.berkas');
+
 });
 
 Route::middleware('guest')->namespace('App\Livewire\Frontend')->group(function () {
@@ -32,12 +36,13 @@ Route::middleware('guest')->namespace('App\Livewire\Frontend')->group(function (
 });
 
 /**
- * SERVICE MAHASISWA
+ * Frontend Namespace
  */
+
 Route::namespace('App\Livewire\Frontend')->group(function(){
     Route::namespace('Service')->prefix('pelayanan-mahasiswa')->name('service-mahasiswa.')->group(function(){
         Route::middleware('auth','roles:user')->get('/upload-berkas', UploadBerkas::class)->name('upload-berkas');
-        Route::get('/lihat-berkas', LihatBerkas::class)->name('lihat-berkas');
+        Route::get('/lihat-berkas/{idBerkas}', LihatBerkas::class)->name('lihat-berkas');
     });
 });
 

@@ -8,9 +8,13 @@
                     <p data-aos="fade-up" data-aos-delay="100">Sistem Layanan Pemberkasan Tugas Akhir Universitas Teknologi
                         Akba Makassar</p>
 
-                    <form action="#" class="form-search d-flex align-items-stretch mb-3" data-aos="fade-up"
+                    <x-alert/>
+
+                    <form action="{{ route('lacak.berkas') }}" method="POST" class="form-search d-flex align-items-stretch mb-3" data-aos="fade-up"
                         data-aos-delay="200">
-                        <input type="text" class="form-control" placeholder="Masukkan ID Berkas">
+                        @csrf
+
+                        <input autofocus required type="text" class="form-control" name="idBerkas" value="{{ old('idBerkas') }}" placeholder="Masukkan ID Berkas">
                         <button type="submit" class="btn btn-primary">Lacak</button>
                     </form>
 
