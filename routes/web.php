@@ -31,9 +31,13 @@ Route::middleware('guest')->namespace('App\Livewire\Frontend')->group(function (
     Route::get('/', Home\Index::class)->name('frontend.home');
 });
 
-Route::middleware('auth','roles:user')->namespace('App\Livewire\Frontend')->group(function(){
+/**
+ * SERVICE MAHASISWA
+ */
+Route::namespace('App\Livewire\Frontend')->group(function(){
     Route::namespace('Service')->prefix('pelayanan-mahasiswa')->name('service-mahasiswa.')->group(function(){
-        Route::get('/upload-berkas', UploadBerkas::class)->name('upload-berkas');
+        Route::middleware('auth','roles:user')->get('/upload-berkas', UploadBerkas::class)->name('upload-berkas');
+        Route::get('/lihat-berkas', LihatBerkas::class)->name('lihat-berkas');
     });
 });
 
