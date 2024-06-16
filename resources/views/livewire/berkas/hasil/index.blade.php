@@ -211,6 +211,10 @@
                                                 <a target="_blank" title="{{ ucwords($row->name_file) . ' - ' . ucwords($row->mahasiswa->name) }}" class="ms-2 small" href="{{ asset('storage/' . $row->file) }}">Lihat File <i class="las la-file"></i></a>
                                             @endif
                                         </span>
+
+                                        <p class="pb-0 mb-0 mt-3">
+                                            <b>{{ $row->code_document }}</b>
+                                        </p>
                                     </div>
                                 </div>
                             </td>
