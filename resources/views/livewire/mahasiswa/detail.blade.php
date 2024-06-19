@@ -100,50 +100,52 @@
                         </div>
                         <div class="card-body">
                             <div class="divide-y">
-                                @foreach (config('const.name_file') as $berkas)
-                                    <div class="d-flex justify-content-between">
-                                        <div class="row">
-                                            <div class="col-auto">
-                                                <span class="avatar">{{ $this->checkFile($berkas)->type_document ?? ''}}</span>
+                                @foreach (config('const.name_file') as $key => $berkas)
+                                    @foreach ($berkas as $file)
+                                        <div class="d-flex justify-content-between">
+                                            <div class="row">
+                                                <div class="col-auto">
+                                                    <span class="avatar">{{ $this->checkFile($file)->type_document ?? ''}}</span>
+                                                </div>
+                                                <div class="col">
+                                                    <div class="text-truncate">
+                                                        <strong>{{ $file }}</strong>
+                                                    </div>
+                                                    <div class="d-flex">
+                                                        @isset($this->checkFile($file)->id)
+                                                            <a class="btn btn-sm bg-orange-lt mt-1" href="{{ route("berkas.$key.revision", $this->checkFile($file)->id) }}">Revisi Berkas</a>
+                                                            <a class="btn btn-sm bg-primary-lt mt-1 ms-1" target="_blank" href="{{ asset('storage/' . $this->checkFile($file)->file) }}">Lihat Berkas</a>
+                                                        @endisset
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <div class="col">
-                                                <div class="text-truncate">
-                                                    <strong>{{ $berkas }}</strong>
-                                                </div>
-                                                <div class="d-flex">
-                                                    @isset($this->checkFile($berkas)->id)
-                                                        <a class="btn btn-sm bg-orange-lt mt-1" href="{{ route('berkas.revision', $this->checkFile($berkas)->id) }}">Revisi Berkas</a>
-                                                        <a class="btn btn-sm bg-primary-lt mt-1 ms-1" target="_blank" href="{{ asset('storage/' . $this->checkFile($berkas)->file) }}">Lihat Berkas</a>
-                                                    @endisset
-                                                </div>
+
+                                            <div>
+                                                @isset($this->checkFile($file)->status_file)
+                                                    @switch($this->checkFile($file)->status_file)
+                                                        @case('approve')
+                                                            <span class="badge bg-green text-white">Ok <i class="las la-check"></i></span>
+                                                            @break
+                                                        @case('pending')
+                                                            <span class="badge bg-orange text-white">Menunggu</span>
+                                                            @break
+                                                        @case('revision')
+                                                            <span class="badge bg-danger text-white">Revisi</span>
+                                                            @break
+                                                        @case('revised')
+                                                            <span class="badge bg-primary text-white">Konfirmasi perbaikan</span>
+                                                            @break
+                                                        @default
+                                                            <span class="badge bg-danger text-white">Belum ada</span>
+                                                    @endswitch
+                                                @endisset
+
+                                                @if (!isset($this->checkFile($file)->status_file))
+                                                    <span class="badge bg-white text-black border-black">Belum ada</span>
+                                                @endif
                                             </div>
                                         </div>
-
-                                        <div>
-                                            @isset($this->checkFile($berkas)->status_file)
-                                                @switch($this->checkFile($berkas)->status_file)
-                                                    @case('approve')
-                                                        <span class="badge bg-green text-white">Ok <i class="las la-check"></i></span>
-                                                        @break
-                                                    @case('pending')
-                                                        <span class="badge bg-orange text-white">Menunggu</span>
-                                                        @break
-                                                    @case('revision')
-                                                        <span class="badge bg-danger text-white">Revisi</span>
-                                                        @break
-                                                    @case('revised')
-                                                        <span class="badge bg-primary text-white">Konfirmasi perbaikan</span>
-                                                        @break
-                                                    @default
-                                                        <span class="badge bg-danger text-white">Belum ada</span>
-                                                @endswitch
-                                            @endisset
-
-                                            @if (!isset($this->checkFile($berkas)->status_file))
-                                                <span class="badge bg-white text-black border-black">Belum ada</span>
-                                            @endif
-                                        </div>
-                                    </div>
+                                    @endforeach
                                 @endforeach
                             </div>
                         </div>
