@@ -42,6 +42,7 @@ Route::middleware('guest')->namespace('App\Livewire\Frontend')->group(function (
 Route::namespace('App\Livewire\Frontend')->group(function(){
     Route::namespace('Service')->prefix('pelayanan-mahasiswa')->name('service-mahasiswa.')->group(function(){
         Route::middleware('auth','roles:user')->get('/upload-berkas', UploadBerkas::class)->name('upload-berkas');
+        Route::middleware('auth','roles:user')->get('/upload-berkas/category/file/{id}', SendBerkas::class)->name('send-berkas');
         Route::get('/lihat-berkas/{idBerkas}', LihatBerkas::class)->name('lihat-berkas');
     });
 });

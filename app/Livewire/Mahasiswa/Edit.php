@@ -48,7 +48,7 @@ class Edit extends Component
                 'email' => $this->email,
                 'roles' => $this->roles,
                 'email_verified_at' => now(),
-                'password' => bcrypt($this->email + "*" + $this->roles),
+                'password' => bcrypt("$this->email*$this->roles"),
             ]);
 
             $mahasiswa->update([
