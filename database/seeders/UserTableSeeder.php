@@ -23,7 +23,7 @@ class UserTableSeeder extends Seeder
             ],
             [
                 'username' => 'Fery Admin',
-                'email' => 'feryfadulrahman@gmail.com',
+                'email' => 'feryfadulrahman1@gmail.com',
                 'email_verified_at' => now(),
                 'password' => bcrypt('fery123'),
                 'roles' => 'admin',

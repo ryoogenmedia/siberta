@@ -32,19 +32,19 @@ return [
         'hasil' => [
             'lembar persetujuan ujian hasil',
             'surat keterangan administrasi pembayaran dari bauk (hasil)',
-            'lembar konsultasi -pembimbing 1',
-            'lembar konsultasi -pembimbing 2',
-            'KARTU RENCANA STUDI (KRS)',
-            'LEMBAR ACC UJIAN HASIL (SCREENSHOOT DI SIAKAD)',
+            'lembar konsultasi -pembimbing 1 (hasil)',
+            'lembar konsultasi -pembimbing 2 (hasil)',
+            'KARTU RENCANA STUDI (KRS) (hasil)',
+            'LEMBAR ACC UJIAN HASIL (SCREENSHOOT DI SIAKAD) (hasil)',
         ],
 
         'tutup' => [
-            'lembar persetujuan ujian hasil',
+            'lembar persetujuan ujian tutup',
             'surat keterangan administrasi pembayaran dari bauk (tutup)',
-            'lembar konsultasi -pembimbing 1',
-            'lembar konsultasi -pembimbing 2',
-            'KARTU RENCANA STUDI (KRS)',
-            'LEMBAR ACC UJIAN HASIL (SCREENSHOOT DI SIAKAD)',
+            'lembar konsultasi -pembimbing 1 (tutup)',
+            'lembar konsultasi -pembimbing 2 (tutup)',
+            'KARTU RENCANA STUDI (KRS) (tutup)',
+            'LEMBAR ACC UJIAN HASIL (SCREENSHOOT DI SIAKAD) (tutup)',
         ],
     ],
 

@@ -30,6 +30,14 @@ class MahasiswaTableSeeder extends Seeder
             'password' => bcrypt("akbar.unitama@gmail.com*user"),
         ]);
 
+        $akun3 = User::create([
+            'username' => 'fery',
+            'email' => 'feryfadulrahman@gmail.com',
+            'roles' => 'user',
+            'email_verified_at' => now(),
+            'password' => bcrypt("feryfadulrahman@gmail.com*user"),
+        ]);
+
         $mahasiswa = [
             [
                 'user_id' => $akun1->id,
@@ -50,6 +58,17 @@ class MahasiswaTableSeeder extends Seeder
                 'email' => 'akbar.unitama@gmail.com',
                 'phone' => '0899733827272',
                 'address' => 'Jl Bakung',
+                'entry_year' => '2023',
+            ],
+
+            [
+                'user_id' => $akun3->id,
+                'name' => 'fery',
+                'nim' => '20232125013',
+                'program_studi' => 'SI',
+                'email' => 'feryfadulrahman@gmail.com',
+                'phone' => '08997398989',
+                'address' => 'Jl pajjaiang',
                 'entry_year' => '2023',
             ]
         ];
