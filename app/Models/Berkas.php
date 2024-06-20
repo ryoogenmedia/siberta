@@ -10,7 +10,6 @@ class Berkas extends Model
     use HasFactory;
 
     protected $table = 'berkas';
-    public  $timestamps = false;
 
     protected $fillable = [
         'mahasiswa_id',
