@@ -44,11 +44,11 @@ class Revision extends Component
             ]);
 
             ModelsRevision::create([
-                'berkas_id' => $this->berkasId,
+                'berkas_id' => $berkas->id,
                 'mahasiswa_id' => $berkas->mahasiswa->id,
                 'user_id' => $user->id,
                 'date_revision' => $this->tanggalRevisi,
-                'gathering_limit_date' => $this->batasTanggalRevisi,
+                'gathering_limit_date' => $this->batasTanggalRevisi ?? null,
                 'note_revision' => $this->catatanRevisi,
                 'provider_name' => $this->namaPengirim,
                 'category' => $this->kategori,

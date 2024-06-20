@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('provider_name')->nullable();
             $table->text('note_revision')->nullable();
             $table->string('category')->nullable();
+            $table->timestamps();
         });
     }
 
