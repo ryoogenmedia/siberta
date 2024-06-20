@@ -250,7 +250,7 @@
                                         </button>
 
                                         @unless ($row->status_file == 'revision')
-                                            <a style="width: 120px" class="btn bg-danger-lt btn-sm" href="{{ route('berkas.proposal.revision', $row->id) }}">Revisi Berkas</a>
+                                            <a style="width: 120px" class="btn bg-danger-lt btn-sm" href="{{ route('berkas.hasil.revision', $row->id) }}">Revisi Berkas</a>
                                         @endunless
 
                                         @if ($row->status_file == 'revision')
