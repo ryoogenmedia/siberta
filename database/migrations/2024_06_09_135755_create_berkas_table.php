@@ -23,6 +23,7 @@ return new class extends Migration
             $table->string('category')->nullable();
             $table->string('code_document')->nullable();
             $table->text('note_mahasiswa')->nullable();
+            $table->string('exam_letter')->nullable();
             $table->timestamps();
         });
     }

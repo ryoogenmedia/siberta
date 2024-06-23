@@ -22,6 +22,7 @@ class Berkas extends Model
         'note_mahasiswa',
         'category',
         'code_document',
+        'exam_letter',
     ];
 
     protected $casts = [
@@ -35,6 +36,7 @@ class Berkas extends Model
         'note_mahasiswa' => 'string',
         'category' => 'string',
         'code_document' => 'string',
+        'exam_letter' => 'string',
     ];
 
     public function revision(){

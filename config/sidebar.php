@@ -11,6 +11,15 @@ return [
     ],
 
     [
+        'title' => 'Surat Ujian',
+        'icon' => 'envelope-open',
+        'route-name' => 'exam.letter',
+        'is-active' => 'exam*',
+        'description' => 'Untuk upload surat ujian.',
+        'roles' => ['admin'],
+    ],
+
+    [
         'title' => 'Berkas Mahasiswa',
         'description' => 'Menampilkan berkas mahasiswa.',
         'icon' => 'newspaper',

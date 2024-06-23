@@ -234,7 +234,7 @@
                                 <div class="d-flex w-100">
                                     <div class="d-flex flex-column">
                                         @unless ($row->status_file == 'approve')
-                                            <button style="width: 120px" class="btn bg-success-lt btn-sm mb-2" wire:click="approve({{ $row->id }})" wire:confirm='Apakah anda yakin ingin menyetujui berkas ini?'>
+                                            <button style="width: 120px" class="btn bg-success-lt btn-sm mb-2" wire:click='approve({{ $row->id }})' wire:confirm='Apakah anda yakin ingin menyetujui berkas ini?'>
                                                 Approve Berkas
                                             </button>
                                         @endunless

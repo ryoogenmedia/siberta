@@ -65,6 +65,14 @@ Route::middleware('auth', 'verified', 'force.logout', 'roles:admin')->namespace(
     });
 
     /**
+     * upload surat ujian
+     */
+
+     Route::namespace('Exam')->prefix('surat-ujian')->name('exam.')->group(function () {
+        Route::get('/', Letter::class)->name('letter');
+    });
+
+    /**
      * pengguna
      */
     Route::namespace('Pengguna')->prefix('pengguna')->name('pengguna.')->group(function () {
