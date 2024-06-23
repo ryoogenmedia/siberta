@@ -22,6 +22,36 @@ class LihatBerkas extends Component
         $this->berkas = Berkas::where('code_document', $idBerkas)->firstOrFail();
     }
 
+    public function downloadSurat(){
+        if($this->berkas->exam_letter && Storage::disk('public')->exists($this->berkas->exam_letter)){
+            $zip = new ZipArchive;
+            $fileName = '[ ' . $this->berkas->mahasiswa->name . ' ]-Surat Ujian-' . $this->berkas->category . '.zip';
+            $zipPath = storage_path('app/public/' . $fileName);
+
+            if ($zip->open($zipPath, ZipArchive::CREATE) === TRUE) {
+
+                $berkasPath = storage_path('app/public/' . $this->berkas->exam_letter);
+                if (file_exists($berkasPath)) {
+                    $extension = pathinfo($berkasPath, PATHINFO_EXTENSION);
+                    $fileInZip = '[ ' . $this->berkas->mahasiswa->name . ' ]-Surat Ujian-' . $this->berkas->category . '.' . $extension;
+                    $zip->addFile($berkasPath, $fileInZip);
+                }
+
+                $zip->close();
+
+                return response()->download($zipPath)->deleteFileAfterSend(true);
+            }else{
+                session()->flash('alert', [
+                    'type' => 'danger',
+                    'message' => 'Gagal.',
+                    'detail' => "file surat ujian mahasiswa tidak ditemukan.",
+                ]);
+
+                return back();
+            }
+        }
+    }
+
     public function downloadFile(){
         if($this->berkas->file && Storage::disk('public')->exists($this->berkas->file)){
             $zip = new ZipArchive;

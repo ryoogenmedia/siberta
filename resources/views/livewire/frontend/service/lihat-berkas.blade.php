@@ -7,12 +7,40 @@
         <x-datatable.button.back name="Kembali Ke Halaman Utama" :route="route('frontend.home')" />
     </div>
 
+    @if ($berkas->status_file == 'approve')
+        <div class="row">
+            <div class="col">
+                <div class="card p-5 my-4 border border-1 border-success">
+                    <h1 class="text-center">BERKAS DI SETUJUI</h1>
+                    <div class="d-flex justify-content-center">
+                        <button wire:click='downloadSurat' class="btn btn-success me-2" style="width: 200px;">Download Surat Ujian</button>
+                        <a href="{{ asset('storage/' . $berkas->exam_letter) }}" target="_blank" class="btn" style="width: 200px;">Lihat Surat Ujian</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endif
+
+    @if ($berkas->status_file == 'revision')
+        <div class="row">
+            <div class="col">
+                <div class="card p-5 my-4 border border-1 border-danger bg-pink-lt">
+                    <h1 class="text-center my-0 py-0 text-danger">BERKAS DI TOLAK</h1>
+                </div>
+            </div>
+        </div>
+    @endif
+
     <div class="row justify-content-center">
         <div class="col-lg-4 col-12 mb-3">
             <div class="card">
-                <div class="card-header d-flex">
-                    <button wire:click='downloadFile' class="btn btn-md btn-green w-100">Download Berkas</button>
-                </div>
+
+                @if ($berkas->file)
+                    <div class="card-header d-flex">
+                        <button wire:click='downloadFile' class="btn btn-md btn-green w-100">Download Berkas</button>
+                    </div>
+                @endif
+
                 <div class="card-body">
                     <div>
                         <div class="row">
