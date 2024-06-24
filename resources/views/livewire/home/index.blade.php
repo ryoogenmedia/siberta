@@ -79,11 +79,13 @@
                 <div class="card-body">
                     <h3 class="card-title">Data Berkas 10 Hari Terakhir</h3>
 
-                    <div data-revisi="{{ json_encode([$this->revisi]) }}"
-                        data-disetujui="{{ json_encode([$this->disetujui]) }}"
-                        data-menunggu="{{ json_encode([$this->menunggu]) }}"
-                        data-perbaikan="{{ json_encode([$this->perbaikan]) }}"
-                        date="{{ json_encode($this->menunggu['date']) }}" id="chart-mentions" class="chart-lg">
+                    <div data-revisi="{{ json_encode($this->revisi['data']) }}"
+                        data-disetujui="{{ json_encode($this->disetujui['data']) }}"
+                        data-menunggu="{{ json_encode($this->menunggu['data']) }}"
+                        data-perbaikan="{{ json_encode($this->perbaikan['data']) }}"
+                        date="{{ json_encode($this->menunggu['date']) }}"
+                        id="chart-mentions"
+                        class="chart-lg">
                     </div>
                 </div>
             </div>
@@ -94,6 +96,7 @@
 @push('scripts')
     <script>
         const item = document.getElementById('chart-mentions');
+        console.log(item.getAttribute('data-menunggu'));
         window.ApexCharts && (new ApexCharts(item, {
             chart: {
                 type: "bar",
@@ -104,7 +107,7 @@
                     show: false,
                 },
                 animations: {
-                    enabled: false
+                    enabled: true
                 },
                 stacked: true,
             },
@@ -169,7 +172,7 @@
                 },
             },
             labels: JSON.parse(item.getAttribute('date')),
-            colors: ["#E87619","#206BC4","#4D89D0", "#4ade80"],
+            colors: ["#E87619","#FF2D0B","#4ade80","#4D89D0", ],
             legend: {
                 show: false,
             },
