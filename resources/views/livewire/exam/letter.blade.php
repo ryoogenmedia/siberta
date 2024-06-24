@@ -216,7 +216,7 @@
                             <td>
                                 <p>
                                     <span class="badge bg-{{ $this->checkExamLetter($row->id, 'tutup') ? 'success' : 'danger' }}-lt">
-                                        {{ $this->checkExamLetter($row->id, 'tutup') ? 'telah di berikan' : 'berlum di berikan' }}
+                                        {{ $this->checkExamLetter($row->id, 'tutup') ? 'telah di berikan' : 'belum di berikan' }}
                                     </span>
                                 </p>
 
