@@ -1,3 +1,10 @@
+    @push('styles')
+    <style>
+        .hidden{
+            display: none;
+        }
+    </style>
+    @endpush
 <div>
     <section id="hero" class="hero d-flex align-items-center">
         <div class="container">
@@ -43,25 +50,25 @@
                 <div class="row">
                     <div class="col-lg-8 col-12">
 
-                        <h4 class="my-4" style="color: #19328a">Pengajuan Berkas Seminar Proposal</h4>
+                        <h4 id="toggle-proposal" class="my-4" style="color: #19328a; cursor: pointer">Pengajuan Berkas Seminar Proposal</h4>
 
-                        <ol type="number" class="my-3" style="font-weight: bold">
+                        <ol id="proposal-list" type="number" class="my-3 hidden" style="font-weight: bold;">
                             @foreach (config('const.name_file.proposal') as $key => $proposal)
                                 <li wire:key='row-{{ $key }}' class="mt-3">{{ $proposal }}</li>
                             @endforeach
                         </ol>
 
-                        <h4 class="my-4" style="color: #001F8D">Pengajuan Berkas Seminar Hasil</h4>
+                        <h4 id="toggle-hasil" class="my-4" style="color: #001F8D;cursor: pointer">Pengajuan Berkas Hasil</h4>
 
-                        <ol type="number" class="my-3" style="font-weight: bold">
+                        <ol id="hasil-list" type="number" class="my-3 hidden" style="font-weight: bold">
                             @foreach (config('const.name_file.hasil') as $key => $hasil)
                                 <li wire:key='row-{{ $key }}' class="mt-3">{{ $hasil }}</li>
                             @endforeach
                         </ol>
 
-                        <h4 class="my-4" style="color: #001F8D">Pengajuan Berkas Tutup</h4>
+                        <h4 id="toggle-tutup" class="my-4" style="color: #001F8D;cursor: pointer">Pengajuan Berkas Tutup</h4>
 
-                        <ol type="number" class="my-3" style="font-weight: bold">
+                        <ol id="tutup-list" type="number" class="my-3 hidden" style="font-weight: bold">
                             @foreach (config('const.name_file.tutup') as $key => $tutup)
                                 <li wire:key='row-{{ $key }}' class="mt-3">{{ $tutup }}</li>
                             @endforeach
@@ -155,3 +162,17 @@
             </div>
     </section>
 </div>
+
+@push('scripts')
+    <script>
+        $('#toggle-proposal').click(function(e){
+            $('#proposal-list').toggle();
+        });
+        $('#toggle-hasil').click(function(e){
+            $('#hasil-list').toggle();
+        });
+        $('#toggle-tutup').click(function(e){
+            $('#tutup-list').toggle();
+        });
+    </script>
+@endpush
