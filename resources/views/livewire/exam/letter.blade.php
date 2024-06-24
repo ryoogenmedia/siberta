@@ -192,7 +192,7 @@
                             <td>
                                 <p>
                                     <span class="badge bg-{{ $this->checkExamLetter($row->id, 'proposal') ? 'success' : 'danger' }}-lt">
-                                        {{ $this->checkExamLetter($row->id, 'proposal') ? 'telah di berikan' : 'berlum di berikan' }}
+                                        {{ $this->checkExamLetter($row->id, 'proposal') ? 'telah di berikan' : 'belum di berikan' }}
                                     </span>
                                 </p>
 
@@ -204,7 +204,7 @@
                             <td>
                                 <p>
                                     <span class="badge bg-{{ $this->checkExamLetter($row->id, 'hasil') ? 'success' : 'danger' }}-lt">
-                                        {{ $this->checkExamLetter($row->id, 'hasil') ? 'telah di berikan' : 'berlum di berikan' }}
+                                        {{ $this->checkExamLetter($row->id, 'hasil') ? 'telah di berikan' : 'belum di berikan' }}
                                     </span>
                                 </p>
 
