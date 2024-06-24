@@ -167,12 +167,18 @@
     <script>
         $('#toggle-proposal').click(function(e){
             $('#proposal-list').toggle();
+            $('#hasil-list').hide();
+            $('#tutup-list').hide();
         });
         $('#toggle-hasil').click(function(e){
             $('#hasil-list').toggle();
+            $('#proposal-list').hide();
+            $('#tutup-list').hide();
         });
         $('#toggle-tutup').click(function(e){
             $('#tutup-list').toggle();
+            $('#hasil-list').hide();
+            $('#proposal-list').hide();
         });
     </script>
 @endpush
