@@ -11,10 +11,11 @@ class SendCodeDocument extends Notification
     use Queueable;
 
     protected $codeDocument;
-
-    public function __construct($codeDocument)
+    protected $namaBerkas;
+    public function __construct($codeDocument,$namaBerkas)
     {
         $this->codeDocument = $codeDocument;
+        $this->namaBerkas = $namaBerkas;
     }
 
     public function via($notifiable)
@@ -26,7 +27,7 @@ class SendCodeDocument extends Notification
     {
         return (new MailMessage)
                 ->subject('Siberta')
-                ->greeting('KODE BERKAS ANDA')
+                ->greeting('KODE BERKAS ' . strtoupper($this->namaBerkas) )
                 ->line($this->codeDocument)
                 ->line('Gunakan Kode Berkas Ini Untuk Melakukan Pelacakan Berkas Anda.');
     }

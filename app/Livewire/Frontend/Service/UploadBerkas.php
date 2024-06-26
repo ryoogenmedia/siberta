@@ -144,7 +144,7 @@ class UploadBerkas extends Component
                     ]);
                 }
 
-                Notification::send(auth()->user(), new SendCodeDocument($berkas->code_document));
+                Notification::send(auth()->user(), new SendCodeDocument($berkas->code_document,$this->namaBerkas));
             }else{
                 $berkas = Berkas::create([
                     'mahasiswa_id' => $this->mahasiswaId,
@@ -160,7 +160,7 @@ class UploadBerkas extends Component
                     'type_document' => 'PDF',
                 ]);
 
-                Notification::send(auth()->user(), new SendCodeDocument($berkas->code_document));
+                Notification::send(auth()->user(), new SendCodeDocument($berkas->code_document,$this->namaBerkas));
             }
 
             DB::commit();
