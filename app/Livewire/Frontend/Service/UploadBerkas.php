@@ -5,6 +5,7 @@ namespace App\Livewire\Frontend\Service;
 use App\Models\Berkas;
 use App\Models\Mahasiswa;
 use App\Models\Revision;
+use App\Notifications\SendCodeDocument;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rule;
 use Livewire\Attributes\Layout;
@@ -12,6 +13,11 @@ use Livewire\Attributes\Title;
 use Livewire\Component;
 use Livewire\WithFileUploads;
 use Carbon\Carbon;
+use Exception;
+use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Notification;
+use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Storage;
 
 class UploadBerkas extends Component
 {
@@ -29,6 +35,7 @@ class UploadBerkas extends Component
     public $catatanMahasiswa;
     public $uploadBerkas;
     public $namaBerkas;
+    public $getKategoriBerkas;
 
     public Revision $revision;
     public $fileBerkas;
@@ -65,10 +72,18 @@ class UploadBerkas extends Component
     }
     public $modalTitle = '' ;
 
-    public function openModal($id,$title ){
+    public function openModal($id,$title, $key){
+        if($key == 0){
+            $this->getKategoriBerkas = 'proposal';
+        }else if($key == 1){
+            $this->getKategoriBerkas = 'hasil';
+        }else{
+            $this->getKategoriBerkas = 'tutup';
+        }
+
         $this->mahasiswaId = $id;
-        $this->show = true;
         $this->namaBerkas = $title;
+        $this->show = true;
     }
 
     public function closeModal(){
@@ -76,6 +91,7 @@ class UploadBerkas extends Component
     }
 
     public function updatedKategoriBerkas($category){
+        Session::put('kategori-berkas', $category);
         $mahasiswa = Mahasiswa::findOrFail($this->mahasiswaId);
         $this->berkas = Berkas::query()
             ->where('mahasiswa_id', $mahasiswa->id)
@@ -92,42 +108,63 @@ class UploadBerkas extends Component
 
         $this->validate([
             'uploadBerkas' => ['required', 'mimes:pdf'],
-            'namaBerkas' => ['required', 'min:2', 'max:255'],
-            'kategoriBerkas' => ['required','min:2','max:255', Rule::in(config('const.category_document'))],
             'statusFile' => ['required', 'string', Rule::in(config('const.status_file'))],
-            'catatanMahasiswa' => ['required', 'string', 'min:2', 'max:255']
+            'catatanMahasiswa' => ['required', 'string', 'min:2', 'max:255'],
+            'getKategoriBerkas' => ['required','string','min:2'],
         ]);
 
         try {
             DB::beginTransaction();
 
-            $filePath = $this->uploadBerkas->store('berkas-mahasiswa', 'public');
+            $berkas = Berkas::where('mahasiswa_id', $this->mahasiswaId)
+                ->where('name_file', $this->namaBerkas)
+                ->where('category', $this->getKategoriBerkas)
+                ->first();
 
-            Berkas::create([
-                'mahasiswa_id' => $this->mahasiswaId,
-                'type_document' => 'PDF',
-                'name_file' => $this->namaBerkas,
-                'note_mahasiswa' => $this->catatanMahasiswa,
-                'date_upload' => Carbon::now()->format('Y-m-d'),
-                'time_upload' => Carbon::now()->format('H:i:s'),
-                'category' => $this->kategoriBerkas,
-                'file' => $filePath,
-                'status_file' => $this->statusFile,
-                'code_document' => code_document(),
-            ]);
+            if($berkas){
+                $berkas->update([
+                    'mahasiswa_id' => $this->mahasiswaId,
+                    'name_file' => $this->namaBerkas,
+                    'note_mahasiswa' => $this->catatanMahasiswa,
+                    'category' => $this->getKategoriBerkas,
+
+                    'date_upload' => Carbon::now()->format('Y-m-d'),
+                    'time_upload' => Carbon::now()->format('H:i:s'),
+                    'status_file' => 'revised',
+                    'type_document' => 'PDF',
+                ]);
+
+                if($this->uploadBerkas){
+                    if($berkas->file){
+                        File::delete(public_path('storage/' . $berkas->file));
+                    }
+
+                    $berkas->update([
+                        'file' => $this->uploadBerkas->store('berkas-mahasiswa','public'),
+                    ]);
+                }
+
+                Notification::send(auth()->user(), new SendCodeDocument($berkas->code_document));
+            }else{
+                $berkas = Berkas::create([
+                    'mahasiswa_id' => $this->mahasiswaId,
+                    'name_file' => $this->namaBerkas,
+                    'note_mahasiswa' => $this->catatanMahasiswa,
+                    'category' => $this->getKategoriBerkas,
+                    'file' => $this->uploadBerkas->store('berkas-mahasiswa','public'),
+                    'status_file' => $this->statusFile,
+
+                    'date_upload' => Carbon::now()->format('Y-m-d'),
+                    'time_upload' => Carbon::now()->format('H:i:s'),
+                    'code_document' => code_document(),
+                    'type_document' => 'PDF',
+                ]);
+
+                Notification::send(auth()->user(), new SendCodeDocument($berkas->code_document));
+            }
 
             DB::commit();
-            session()->flash('alert', [
-                'type' => 'success',
-                'message' => 'Berhasil.',
-                'detail' => "upload berkas $this->kategoriBerkas ditambah.",
-            ]);
-
-            $this->formReset();
-
-        } catch (\Exception $e) {
-            DB::rollBack();
-
+        } catch (Exception $e) {
             session()->flash('alert', [
                 'type' => 'danger',
                 'message' => 'Gagal.',
@@ -136,12 +173,24 @@ class UploadBerkas extends Component
 
             return back();
         }
+
+        session()->flash('alert', [
+            'type' => 'success',
+            'message' => 'Berhasil.',
+            'detail' => "upload berkas $this->kategoriBerkas ditambah.",
+        ]);
+
+        return redirect()->route('service-mahasiswa.upload-berkas');
     }
 
     public function mount(){
 
         $akun = auth()->user();
         $mahasiswa = Mahasiswa::where('email', $akun->email)->firstOrFail();
+
+        if(Session::get('kategori-berkas')){
+            $this->kategoriBerkas = Session::get('kategori-berkas');
+        }
 
         if($mahasiswa){
             $this->mahasiswaId = $mahasiswa->id;

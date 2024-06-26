@@ -4,41 +4,41 @@
 <div>
     <x-alert/>
 
-        <x-modal size="md" :show="$show">
-            <form wire:submit='save'>
-                <div class="modal-header">
-                    <h5 class="modal-title">Upload Berkas {{ ucfirst($this->namaBerkas) }} </h5>
-                    <button wire:click='closeModal' type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
+    <x-modal size="md" :show="$show">
+        <form wire:submit='save'>
+            <div class="modal-header">
+                <h5 class="modal-title">Upload Berkas {{ ucfirst($this->namaBerkas) }} </h5>
+                <button wire:click='closeModal' type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
 
-                    <x-form.input
-                        wire:model='uploadBerkas'
-                        type='file'
-                        name="namaBerkas"
-                        label="Upload Berkas Mahasiswa"
+                <x-form.input
+                    wire:model='uploadBerkas'
+                    type='file'
+                    name="uploadBerkas"
+                    label="Upload Berkas Mahasiswa"
+                />
+
+                <x-form.textarea
+                        wire:model="catatanMahasiswa"
+                        name="catatanMahasiswa"
+                        label="Catatan Mahasiswa"
+                        rows="6"
+                />
+            </div>
+            <div class="modal-footer">
+                <div class="btn-list justify-content-end">
+                    <button type="reset" class="btn">Reset</button>
+
+                    <x-datatable.button.save
+                        color="success"
+                        name="Upload Berkas"
+                        target="save"
                     />
-
-                    <x-form.textarea
-                            wire:model="catatanMahasiswa"
-                            name="catatanMahasiswa"
-                            label="Catatan Mahasiswa"
-                            rows="6"
-                    />
                 </div>
-                <div class="modal-footer">
-                    <div class="btn-list justify-content-end">
-                        <button type="reset" class="btn">Reset</button>
-
-                        <x-datatable.button.save
-                            color="success"
-                            name="Upload Berkas"
-                            target="save"
-                        />
-                    </div>
-                </div>
-            </form>
-        </x-modal>
+            </div>
+        </form>
+    </x-modal>
 
     <div class="row">
         @isset ($this->revision)
@@ -95,7 +95,7 @@
                         </div>
 
                         @if ($this->kategoriBerkas)
-                            @foreach ($this->kategoriBerkas() as $berkas)
+                            @foreach ($this->kategoriBerkas() as $key => $berkas)
                                 <div>
                                     <div class="row">
                                         <div class="col">
@@ -141,7 +141,7 @@
                                             </div>
                                             <div class="d-flex w-100">
                                                 <div class="ms-auto">
-                                                    <button wire:click='openModal({{ $mahasiswaId }}, "{{ $berkas }}")' class="btn btn-success">Upload Berkas {{ ucfirst($kategoriBerkas) }}</button>
+                                                    <button wire:click='openModal({{ $mahasiswaId }},"{{ $berkas }}", "{{ $key }}")' class="btn btn-success">Upload Berkas {{ ucfirst($kategoriBerkas) }}</button>
                                                 </div>
                                             </div>
                                         </div>
