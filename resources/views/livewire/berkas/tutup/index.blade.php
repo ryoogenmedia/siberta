@@ -219,7 +219,7 @@
                                 </div>
                             </td>
 
-                            <td><span @class(['badge','bg-green-lt' => $row->status_file == 'approve', 'bg-danger-lt' => $row->status_file == 'revision', 'bg-orange-lt' => $row->status_file == 'pending'])>{{ $row->status_file }}</span></td>
+                            <td><span @class(['badge','bg-green-lt' => $row->status_file == 'approve', 'bg-danger-lt' => $row->status_file == 'revision', 'bg-orange-lt' => $row->status_file == 'pending', 'bg-primary-lt' => $row->status_file == 'revised'])>{{ $row->status_file }}</span></td>
 
                             <td>
                                 <div class="d-flex flex-column">
