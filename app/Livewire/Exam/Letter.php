@@ -10,6 +10,7 @@ use App\Models\Berkas;
 use App\Models\Mahasiswa;
 use Exception;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\File;
 use Illuminate\Validation\Rule;
 use Livewire\Attributes\Computed;
 use Livewire\Component;
@@ -108,9 +109,15 @@ class Letter extends Component
         try {
             DB::beginTransaction();
 
-            $berkasFirst->update([
-                'exam_letter' => $this->suratUjian->store('surat-ujian', 'public'),
-            ]);
+            if($this->suratUjian){
+                if($berkasFirst->exam_letter){
+                    File::delete(public_path('storage/' . $berkasFirst->exam_letter));
+                }
+
+                $berkasFirst->update([
+                    'exam_letter' => $this->suratUjian->store('surat-ujian', 'public'),
+                ]);
+            }
 
             foreach($berkas as $data){
                 $data->update([
