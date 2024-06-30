@@ -29,7 +29,7 @@ class Index extends Component
                 'required',
                 'unique:users,username,' . $this->userId,
                 'min:3',
-                'max:12',
+                'max:255',
                 'regex:/\w*$/',
             ],
             'surel' => [
@@ -38,7 +38,7 @@ class Index extends Component
                 'unique:users,email,' . $this->userId,
             ],
             'kataSandi' => ['nullable', 'min:6', 'same:konfirmasiKataSandi'],
-            'avatar' => ['nullable', 'file', 'image', 'max:1024'],
+            'avatar' => ['nullable', 'file', 'image', 'max:4048'],
         ];
     }
 

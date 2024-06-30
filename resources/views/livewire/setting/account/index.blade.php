@@ -43,7 +43,7 @@
                                 placeholder="contoh@email.com" type="email" />
 
                             <div class="row">
-                                <div class="col-2">
+                                <div class="col-2 me-lg-0 me-4">
                                     @if ($avatar)
                                         <span class="avatar avatar-md"
                                             style="background-image: url({{ $avatar->temporaryUrl() }})"></span>
