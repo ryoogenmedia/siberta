@@ -171,7 +171,8 @@ class UploadBerkas extends Component
                 'detail' => "Upload Berkas $this->kategoriBerkas",
             ]);
 
-            return back();
+            $this->show = false;
+            return redirect()->route('service-mahasiswa.upload-berkas');
         }
 
         session()->flash('alert', [
@@ -180,6 +181,7 @@ class UploadBerkas extends Component
             'detail' => "upload berkas $this->kategoriBerkas ditambah.",
         ]);
 
+        $this->show = false;
         return redirect()->route('service-mahasiswa.upload-berkas');
     }
 
