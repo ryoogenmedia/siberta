@@ -132,6 +132,7 @@ class UploadBerkas extends Component
                     'time_upload' => Carbon::now()->format('H:i:s'),
                     'status_file' => 'revised',
                     'type_document' => 'PDF',
+                    'code_document' => code_document(),
                 ]);
 
                 if($this->uploadBerkas){
@@ -144,7 +145,9 @@ class UploadBerkas extends Component
                     ]);
                 }
 
-                Notification::send(auth()->user(), new SendCodeDocument($berkas->code_document,$this->namaBerkas));
+                if($berkas->code_document){
+                    Notification::send(auth()->user(), new SendCodeDocument($berkas->code_document,$this->namaBerkas));
+                }
             }else{
                 $berkas = Berkas::create([
                     'mahasiswa_id' => $this->mahasiswaId,
