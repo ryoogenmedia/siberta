@@ -25,6 +25,10 @@
                         <button type="submit" class="btn btn-primary">Lacak</button>
                     </form>
 
+                    <div class="col-lg-5 order-1 order-lg-2 hero-img d-lg-none d-block mt-5" data-aos="zoom-out">
+                        <img src="{{ asset('img/hero-img.png') }}" class="img-fluid mb-3 mb-lg-0" alt="">
+                    </div>
+
                     <div class="row gy-4" data-aos="fade-up" data-aos-delay="400">
 
                         <div class="col-lg-5 col-6">
@@ -34,7 +38,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-5 order-1 order-lg-2 hero-img" data-aos="zoom-out">
+                <div class="col-lg-5 order-1 order-lg-2 hero-img d-lg-block d-none" data-aos="zoom-out">
                     <img src="{{ asset('img/hero-img.png') }}" class="img-fluid mb-3 mb-lg-0" alt="">
                 </div>
             </div>
